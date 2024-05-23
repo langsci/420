@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   fill="#000000"
+   version="1.1"
+   id="Capa_1"
+   width="800.00055"
+   height="697.68152"
+   viewBox="0 0 367.01125 320.07012"
+   xml:space="preserve"
+   sodipodi:docname="warning.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs15" /><sodipodi:namedview
+   id="namedview13"
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1.0"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="0.295"
+   inkscape:cx="6.779661"
+   inkscape:cy="349.15254"
+   inkscape:window-width="3840"
+   inkscape:window-height="2136"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Capa_1" />
+<g
+   id="g10"
+   transform="translate(2.5e-4,-23.4705)">
+	<g
+   id="g8">
+		<path
+   d="M 365.221,329.641 190.943,27.788 c -1.542,-2.674 -4.395,-4.318 -7.479,-4.318 -3.084,0 -5.938,1.645 -7.48,4.318 L 1.157,330.584 c -1.543,2.674 -1.543,5.965 0,8.639 1.542,2.674 4.395,4.318 7.48,4.318 h 349.65 c 0.028,0 0.057,0 0.086,0 4.77,0 8.638,-3.863 8.638,-8.639 0,-1.982 -0.669,-3.802 -1.79,-5.261 z M 23.599,326.266 183.464,49.381 343.328,326.266 Z"
+   id="path2" />
+		<path
+   d="m 174.826,136.801 v 123.893 c 0,4.773 3.867,8.638 8.638,8.638 4.77,0 8.637,-3.863 8.637,-8.638 V 136.801 c 0,-4.766 -3.867,-8.637 -8.637,-8.637 -4.771,0.001 -8.638,3.872 -8.638,8.637 z"
+   id="path4" />
+		<path
+   d="m 183.464,279.393 c -5.922,0 -10.725,4.8 -10.725,10.722 0,5.922 4.803,10.729 10.725,10.729 5.921,0 10.725,-4.809 10.725,-10.729 0,-5.922 -4.803,-10.722 -10.725,-10.722 z"
+   id="path6" />
+	</g>
+</g>
+</svg>

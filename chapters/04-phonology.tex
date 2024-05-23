@@ -1,0 +1,2392 @@
+\begin{refsection}
+\hypertarget{phonology}{%
+\chapter{Phonology}\label{chap-phonology}}
+
+\hypertarget{introduction}{%
+\section{Introduction}}
+
+ Whilst phonetics, the subject of the previous chapter, is concerned with the physical aspects of sound, phonology is the study of their functions and the ways in which sounds can pattern within the system of the language. Phonology is connected to phonetics in the sense that, once the basic phonetic concepts are understood (characterisation of the sounds), we can begin unveiling the ways in which these sounds interact with one another. It will therefore be useful to introduce a way to succinctly describe the phonological changes that can take place.
+
+\hypertarget{phonological-notation}{%
+\section{Phonological notation}}
+
+\note{These notations are meant to make rule writing easier and faster, thus saving time. However, their use is not necessary; if you are unsure of how to use them, it is better to avoid using them in an actual competition, rather than risk using them incorrectly.}
+
+\ea  \featurebox{±A}
+\z
+
+This shows that the sound we refer to has (+) or does not have (--) the
+feature A. Thus, we can characterise the sound [m] (bilabial
+nasal) as
+\begin{center}
+\featurebox{+bilabial\\+nasal},
+\end{center}
+
+\noindent and the sound [s] (voiceless alveolar fricative) as
+\begin{center}\featurebox{+alveolar\\--voice\\+fricative}.\end{center}
+
+\note{In reality, the notation is more complex in the sense
+that each feature \OlympiadFeature{A} must be binary (i.e., have only two
+possible values). A feature like voice is binary in that all consonants  are either voiced (\textsc{+voice})
+or voiceless (\textsc{-voice}). The parameter fricative is somewhat different: the sounds that are not fricatives (\textsc{-fricative}) do not necessarily share a common property, e.g., they can be stops, affricates, nasals, and so on. Nevertheless, for the purpose of linguistics problems, there is no need to get into any more details and we can simply write the place and manner of articulation.
+}
+
+\ea  \OlympiadPhonRule{A \rightarrow~B / C \_ V} \z
+
+
+This is a phonological rule and is to be read as follows: ``the sound A becomes (\rightarrow) B if it appears in a certain environment (/)..." (in this
+case, if it is between a consonant (C) and a vowel (V)). When writing phonological rules, the underscore ( \_ ) shows the position of the sound which is affected. Therefore, if we want to write the rule
+``\cmubdata{k} becomes \cmubdata{g} before \cmubdata{a}'', we write \cmubdata{k \rightarrow~g / \_ a}.
+
+There are other symbols that can be used to explain the environment in which the transformation takes place. For example, the hash sign (\OlympiadPhonRule{\#}) marks the word boundary (so \OlympiadPhonRule{\_ \#} represents the end of the word – the sound that changes is before the word boundary, so at the end of the word --, while \OlympiadPhonRule{\# \_} represents the beginning of the word). As mentioned in the previous chapter, the syllable boundary is marked with a full stop (\OlympiadPhonRule{.}). The notation \OlympiadPhonRule{C\textsubscript{0}} represents a sequence of consonants (or an absence of a consonant): thus, the string \cmubdata{u}C\textsubscript{0} matches \cmubdata{u}, \cmubdata{u}C, \cmubdata{u}CC, \cmubdata{u}CCC, etc.
+
+In order to denote multiple possibilities, we can use curly brackets. If we want to write the rule ``\cmubdata{k} becomes \cmubdata{g} if at the beginning of the word or after a vowel'', we can write:
+
+\begin{center}
+\phonrule{k}{g}{$\left\{\begin{array}{c}\#\longrule\\V\longrule\\\end{array}\right\}$}
+\end{center}
+
+When writing these rules, we can also use the (square) bracket notation shown above, therefore, if we want to write ``\cmubdata{k} becomes \cmubdata{g} after a voiced consonant'', we can write:
+
+
+\begin{center}
+\phonrule{k}{g}{\featurebox{--syllabic\\+voice}\longrule}
+\end{center}
+
+% \centerline{\OlympiadPhonRule{k \rightarrow~g /} \(\begin{bmatrix}
+% \mathbf{- syllabic} \\
+% \mathbf{+ voice} \\
+% \end{bmatrix}\) \OlympiadPhonRule{\_}}
+
+We need to mention the parameter {[}\textsc{-syllabic}{]} (specifying that it is a non-syllabic sound) in order to exclude the vowels.
+
+Moreover, in certain cases, we can use Greek letters
+(\(α,\ \beta,\ \gamma\), etc.) instead of \(\pm\). They are used in
+order to show that a certain feature has the same value in multiple parts of the rule, but it could be either a plus or a minus but, importantly, the values must match.
+
+One common use of this notation is to describe assimilation. For example, the following rule: 
+
+% \centerline{
+% \(\mathbf{n \rightarrow~}
+% \boldsymbol{[α\ PLACE]} \) \OlympiadPhonRule{/ \_} \(\begin{bmatrix}
+% \mathbf{+ stop} \\
+% \boldsymbol{α\ PLACE} \\
+% \end{bmatrix}\)}
+
+\ea
+\phonrule{n}{\featurebox{α PLACE}}{{\longrule}\featurebox{+stop\\α PLACE}}
+\z
+
+can be read as: ``The consonant \cmubdata{n} before a stop will change its place of articulation to match the place of articulation of the stop." Basically, this rule combines all the following into one: 
+% \begin{itemize}
+%     \item \(\mathbf{n \rightarrow~}
+% \mathbf{[+ bilabial]}\) \OlympiadPhonRule{/ \_} \(\begin{bmatrix}
+% \mathbf{+ stop} \\
+% \mathbf{+ bilabial} \\
+% \end{bmatrix}\)
+
+\begin{itemize}
+\item \phonrule{n}{\featurebox{+bilabial}}{{\longrule}\featurebox{+stop\\+bilabial}}
+
+% \item \(\mathbf{n \rightarrow~}
+% \mathbf{[+ palatal]}\) \OlympiadPhonRule{/ \_} \(\begin{bmatrix}
+% \mathbf{+ stop} \\
+% \mathbf{+ palatal} \\
+% \end{bmatrix}\)
+
+\item \phonrule{n}{\featurebox{+palatal}}{{\longrule}\featurebox{+stop\\+palatal}}
+% \item \(\mathbf{n \rightarrow~}
+% \mathbf{[+ velar]}\) \OlympiadPhonRule{/ \_} \(\begin{bmatrix}
+% \mathbf{+ stop} \\
+% \mathbf{+ velar} \\
+% \end{bmatrix}\), etc.
+
+\item \phonrule{n}{\featurebox{+velar}}{{\longrule}\featurebox{+stop\\+velar}}
+and so on.  
+% \z
+
+\end{itemize}
+
+ For more examples of how to use alpha notation, see problems 4.3 and 4.4.
+
+\hypertarget{complementary-distribution}{%
+\section{\texorpdfstring{Complementary distribution}{Complementary distribution}}}
+
+Complementary distribution is the relation between two or more sounds, in which each sound can only be found in certain environments (under certain conditions). Some languages can use the same symbol for two or more sounds which have a complementary distribution because, depending on the environment where they are found, there will be no ambiguity regarding the sound it represents. For example, in Korean, the character {\koreantext{ㄹ}} represents both the sounds \cmubdata{l} and \cmubdata{r}, but there are specific pronunciation rules. This character is pronounced \cmubdata{r} if it is between two vowels, and \cmubdata{l} otherwise. As one can notice, there is a predictable environment (which can be described) and another default environment (for all the other cases). We can write a phonological rule to explain the transformation of the sound in the given context. For example, for Korean, we can write the rule: \OlympiadPhonRule{l \rightarrow~r / V \_ V} (reading “the sound \cmubdata{l} becomes \cmubdata{r} if it is between two vowels”). In all cases, the transformation is made starting from the default sound (whose environment is not predictable) towards the predictable sound (so we can then specify the exact environment in which the transformation takes place).
+
+Often, complementary distribution environments depend on the position before/after a vowel or the beginning/end of the word. Thus, these are the first things to check. Of course, there can be more complex cases in which the complementary distribution depends on the features of the previous or following sounds or even sounds further away in the word.
+
+Let us consider the following examples from Spanish. We focus on the sounds \cmubdata{d} and \cmubdata{ð}, which, in these data, are in a complementary distribution:
+
+\begin{exe}
+\sn
+\cmubdata{aban[d]onar}, \cmubdata{alcal[d]e}, \cmubdata{[d]ecir}, \cmubdata{[d]oncel}, \cmubdata{[d]on[d]e}, \cmubdata{entra[ð]a}, \cmubdata{la[ð]o}, \cmubdata{me[ð]ir}, \cmubdata{na[ð]a}, \cmubdata{senti[ð]o}
+\end{exe}
+
+The first step is to split the words into two groups, depending on which sound they contain:
+
+\begin{table}[H]
+\begin{tabular}{ll}
+\lsptoprule
+   \cmubdata{d} sound & \cmubdata{ð} sound  \\\midrule
+   \cmubdata{aban[d]onar} & \cmubdata{entra[ð]a}\\
+   \cmubdata{alcal[d]e} & \cmubdata{la[ð]o} \\
+   \cmubdata{[d]ecir} & \cmubdata{me[ð]ir}\\
+   \cmubdata{[d]oncel} & \cmubdata{na[ð]a}\\
+   \cmubdata{[d]on[d]e} & \cmubdata{senti[ð]o}\\
+\lspbottomrule
+\end{tabular}
+\end{table}
+
+We notice that neither of the two sounds appears exclusively at the end or beginning of the word, so we can exclude the possibility that this is the relevant factor. Next, we check if any of the two prefer to be before/after/in between vowels. We notice that both \cmubdata{d} and \cmubdata{ð} appear before vowels, so this is not helpful, but we notice that \cmubdata{ð} is found only after a vowel (while \cmubdata{d} is always either at the beginning of the word, or after a consonant). Thus, since \cmubdata{ð} is the one with a predictable environment (after a vowel), we can write the phonological rule: \mbox{\OlympiadPhonRule{d \rightarrow~ð / V\_}}.
+
+Let us analyse the following examples (for simplicity, they are already split into two columns):
+
+In Kimatuumbi (spoken in Tanzania), sounds \cmubdata{g} and \cmubdata{ɠ} are
+in a complementary distribution.
+
+\begin{table}[H]
+\begin{tabular}{ll}
+\lsptoprule
+   \cmubdata{g} sound & \cmubdata{ɠ} sound  \\\midrule
+   \cmubdata{lisɛɛŋgɛlɛ} & \cmubdata{ɠʊlʊja}\\
+   \cmubdata{kjaaŋgi} & \cmubdata{nuɠa} \\
+   \cmubdata{likʊʊŋgwa} & \cmubdata{ɠɔlɔja}\\
+   \cmubdata{ŋgaambalɛ} & \cmubdata{ɠʊlʊka}\\
+\lspbottomrule
+\end{tabular}
+\end{table}
+
+In this case, we can easily observe that \cmubdata{g} only appears after
+\cmubdata{ŋ}. Thus, we can write the rule: \OlympiadPhonRule{ɠ \rightarrow~g / ŋ \_}.
+
+In a variety of Luganda, the sounds \cmubdata{l} and \cmubdata{r} are in a complementary distribution:
+
+\begin{table}[H]
+\begin{tabular}{ll}
+\lsptoprule
+   \cmubdata{l} sound & \cmubdata{r} sound  \\\midrule
+   \cmubdata{kola} & \cmubdata{beera}\\
+   \cmubdata{lwana} & \cmubdata{jjukira} \\
+   \cmubdata{lja} & \cmubdata{erjato}\\
+   \cmubdata{luula} & \cmubdata{effirimbi}\\
+   \cmubdata{omugole} & \cmubdata{emmeeri}\\
+   \cmubdata{lumonde} & \cmubdata{eraddu}\\
+   \cmubdata{oluganda} & \cmubdata{wawaabira}\\
+\lspbottomrule
+\end{tabular}
+\end{table}
+
+This time, we notice that both \cmubdata{l} and \cmubdata{r} appear solely next to vowels (or \cmubdata{j}). Moreover, their environment does not seem to be connected to the beginning or end of the word, so the next step is to look at the type of sounds next to which they appear. We notice that \cmubdata{l} appears only at the beginning of the word or after the vowel \cmubdata{o}, while \cmubdata{r} appears only after the vowels \cmubdata{i} and \cmubdata{e}. Therefore, based on this observation, we can write two possible phonological rules: \mbox{\OlympiadPhonRule{l \rightarrow~r / \{e, i\} \_ }} or \mbox{\OlympiadPhonRule{r \rightarrow~l / \{\# \_, o \_\}}}. This is the moment when it is important to understand the phonetic concepts. Generally, phonological rules are conditioned by a particular feature or features of sounds in the environment where the alternating sounds appear. Thus, we notice that both \cmubdata{i} and \cmubdata{e} are front vowels (and the data do not contain any other front vowels), so the rule becomes: \mbox{\OlympiadPhonRule{l \rightarrow~r / [\textsc{+ front}] \_}}. Generally, if an environment depends on more sounds (in this case \cmubdata{i} and \cmubdata{e}), there will be a connection between these sounds (they will share a certain feature) and, in most cases, in linguistics problems, there will be a task asking you to extend this rule to other sounds. For example, for this problem, it is possible that one of the tasks would feature another front vowel, and you will need to deduce that after that vowel the sound \cmubdata{r} will be used.
+
+\begin{problem}{\langnameIrish}{\nameAKukhto}{\ElementyAbbr}
+Here are some Irish verb forms for the imperative and present indicative, as well as their English translations:
+
+\begin{table}[H]
+\begin{tabular}{ll ll}
+\lsptoprule
+\multicolumn{2}{c}{Imperative} & \multicolumn{2}{c}{Present indicative} \\\cmidrule(lr){1-2}\cmidrule(lr){3-4}
+\pbsv{fan}{Stay!} & \pbsv{fanaim}{I stay} \\
+\pbsv{cuir}{Put!} & \pbsv{cuireann sé}{he puts} \\
+\pbsv{ceannaigh}{Buy!} & \pbsv{ceannaíonn tú}{you\sg\ buy} \\
+\pbsv{creid}{Believe!} & \pbsv{creidim}{I believe} \\
+\pbsv{críochnaigh}{End!} & \pbsv{críochnaíonn sé}{he ends} \\
+\pbsv{déan}{Do!} & \pbsv{déanann sí}{she does} \\
+\pbsv{smaoinigh}{Think!} & \pbsv{smaoiníonn sibh}{you\pl\ think} \\
+\pbsv{ól}{Drink!} & \pbsv{ólann sé}{he drinks} \\
+\pbsv{oibrigh}{Work!} & \pbsv{oibríonn siad}{they work} \\
+\pbsv{fág}{Leave!} & \pbsv{fágann muid}{we leave} \\
+\pbsv{éirigh}{Raise!} & \pbsv{éiríonn sí}{she raises} \\
+\pbsv{lig}{Let!} & \pbsv{ligeann tú}{you\sg\ let} \\
+\pbsv{tosaigh}{Start!} & \pbsv{tosaím}{I start} \\
+\pbsv{ith}{Eat!} & \pbsv{itheann sé}{he eats} \\
+\lspbottomrule
+\end{tabular}
+\end{table}
+
+\begin{assgts}
+\item \transinen[\langnameIrish]
+\begin{multicols}{3}
+\begin{itemize}
+    \item[] \texttr{you\sg\ believe}
+    \item[] \texttr{you\sg\  stay}
+    \item[] \texttr{I end}
+    \item[] \texttr{I work}
+    \item[] \texttr{I put}
+    \item[] \texttr{I drink}
+    \item[] \texttr{I think}
+    \item[] \texttr{you\sg\  start}
+    \blankitem
+\end{itemize}
+\end{multicols}
+\end{assgts}
+
+\end{problem}
+
+\begin{mysolution}
+
+The first step in this type of problems is to classify the different forms based on their characteristics. In this case, we can classify the forms in the right column based on person. Nevertheless, we notice that all forms, except for those in the 1st person singular (1\textsc{sg}), end in \cmubdata{nn} and are followed by the subject pronoun, while forms in the 1\textsc{sg} are composed of one word (do not include the subject pronoun).
+
+We can start with the 1\textsc{sg} forms.
+
+\begin{table}[H]
+\begin{tabular}{llll}
+\lsptoprule
+\multicolumn{2}{c}{Imperative} & \multicolumn{2}{c}{Present indicative} \\\cmidrule(r){1-2}\cmidrule(l){3-4}
+\pbsv{fan}{Stay!} & \pbsv{fanaim}{I stay} \\
+\pbsv{creid}{Believe!} & \pbsv{creidim}{I believe} \\
+\pbsv{tosaigh}{Start!} & \pbsv{tosaím}{I start} \\
+\lspbottomrule
+\end{tabular}
+\end{table}
+
+We observe that there are three ways in which we can construct the 1\textsc{sg} form: adding the suffix \cmubdata{-aim}, adding the suffix \cmubdata{-im} or replacing the ending \cmubdata{-igh} with \cmubdata{-ím}.
+
+Similarly, we will want to observe how the other verb forms are formed. We ignore the subject pronouns added in the end but focus on the verb form. We get:
+
+\begin{itemize}
+\item   2\textsc{sg}: add the suffix \cmubdata{-eann} or replace \cmubdata{-igh} \rightarrow~\cmubdata{-íonn};
+\item   3\textsc{sg}, masc.: add suffixes \cmubdata{-eann}, \cmubdata{-ann} or replace
+  \cmubdata{-igh} \rightarrow~\cmubdata{-íonn};
+\item   3\textsc{sg}, fem.: add suffix \cmubdata{-ann} or replace \cmubdata{-igh} \rightarrow~\cmubdata{-íonn};
+\item   1\textsc{pl}: add suffix \cmubdata{-ann};
+\item   2\textsc{pl}: replace \cmubdata{-igh} \rightarrow~\cmubdata{-íonn};
+\item   3\textsc{pl}: replace \cmubdata{-igh} \rightarrow~\cmubdata{-íonn};
+\end{itemize}
+
+ We notice that all these verb forms are obtained through the same three transformations, independent of person: adding the suffixes \cmubdata{-eann}, \cmubdata{-ann} or replacing \cmubdata{-igh \rightarrow~-íonn}. Therefore, most likely, in this problem, there are only two verb forms: the form for 1\textsc{sg} and the form for all the others (in which case, to avoid ambiguity, the subject pronoun is added after the verb). This is also supported by the way in which the task is phrased since all the verb forms that we need to translate are only 1\textsc{sg} or 2\textsc{sg}.
+
+Moreover, just like in the case of 1\textsc{sg}, there are three possible transformations. Therefore, we can assume that Irish verbs can be classified into three different categories, each of them having its own way of expressing these forms. We can easily figure out that the verbs which end in \cmubdata{-igh} in their imperative form the 1\textsc{sg} present indicative by replacing \cmubdata{-igh} with \cmubdata{-ím} and the other forms by replacing \cmubdata{-igh} with \cmubdata{-íonn}. We are left to discover the environment for the other two transformations. For this, we classify the verbs into two categories, based on the way they form their non-1\textsc{sg} form:
+
+\begin{table}[H]
+\begin{tabular}{ll}
+   \lsptoprule
+   \cmubdata{-eann} & \cmubdata{-ann}\\
+   \midrule
+   \cmubdata{cuir} \texttr{to put} & \cmubdata{déan} \texttr{to do}\\
+   \cmubdata{lig} \texttr{to eat} & \cmubdata{ól} \texttr{to drink} \\
+   \cmubdata{ith} \texttr{to let} & \cmubdata{fág} \texttr{to leave}\\
+   \lspbottomrule
+\end{tabular}
+\end{table}
+
+The classification of these forms seems to not take into account any semantic features (related to meaning) since there seems to be nothing in common between the verbs \{\texttr{to put}, \texttr{to eat}, \texttr{to let}\} compared with \{\texttr{to do}, \texttr{to drink}, \texttr{to leave}\}. Therefore, most likely there are some phonetic characteristics (related to the form of the word) that are relevant.
+
+Probably, at first glance, we would be tempted to consider that the ending \cmubdata{-ann} is used for verbs that contain a vowel marked with the acute accent (in the Irish spelling system, the accent marks vowel length, although you cannot know this from the problem). Nevertheless, this rule would not apply to the 1\textsc{sg} form, since the form \cmubdata{-im} appears with the verb \cmubdata{creid}, and the form \cmubdata{-aim} appears with the verb \cmubdata{fan}, none of them having an accent. Looking closely at the verbs and knowing that this distinction must also be present between the verbs \cmubdata{fan} and \cmubdata{creid}, we notice that in all verbs that receive the suffix \cmubdata{-eann}, the last vowel before the consonant is \cmubdata{i}. Therefore, the verbs that have the last vowel \cmubdata{i} (and which do not end in \cmubdata{-igh}) form their 1\textsc{sg} by adding the suffix \cmubdata{-im} and their non-1\textsc{sg} by adding the suffix \cmubdata{-eann}, while the other verbs use the suffixes \cmubdata{-aim} and \cmubdata{-ann}, respectively. Therefore, we have all the information needed to solve the task.
+
+\begin{assgts}
+\item
+\begin{itemize}[leftmargin = 1em]
+\begin{multicols}{2}
+        \item[] \texttr{you\sg~believe} = \cmubdata{creideann tú}
+        \item[] \texttr{I end} = \cmubdata{críochnaím}
+        \item[] \texttr{I put} = \cmubdata{cuirim}
+        \item[] \texttr{I think} = \cmubdata{smaoiním}
+        \item[] \texttr{you\sg~stay} = \cmubdata{fanann tú}
+        \item[] \texttr{I work} = \cmubdata{oibrím}
+        \item[] \texttr{I drink} = \cmubdata{ólaim}
+        \item[] \texttr{you\sg~start} = \cmubdata{tosaíonn tú}
+\end{multicols}\end{itemize}
+\end{assgts}
+\rules
+\begin{enumerate}
+\item If the imperative form ends in \cmubdata{-igh}:
+
+\vspace*{-\multicolsep}
+\begin{multicols}{2}
+\begin{itemize}
+    \item 1\textsc{sg}: \cmubdata{-igh \rightarrow~-ím};
+    \item non-1\textsc{sg}: \cmubdata{-igh \rightarrow~-íonn};
+    \end{itemize}
+\end{multicols}
+\vspace*{-\multicolsep}
+\item else:
+\begin{enumerate}
+    \item If last vowel is \cmubdata{i}:
+    \vspace*{-\multicolsep}
+\begin{multicols}{2}
+\begin{itemize}
+    \item 1\textsc{sg}: \cmubdata{-im};
+
+    \item non-1\textsc{sg}: \cmubdata{-eann};
+\end{itemize}
+\end{multicols}
+\vspace*{-\multicolsep}
+\item Else:
+\vspace*{-\multicolsep}
+\begin{multicols}{2}
+\begin{itemize}
+    \item 1\textsc{sg}: \cmubdata{-aim};
+    \item non-1\textsc{sg}: \cmubdata{-ann};
+    \end{itemize}
+\end{multicols}
+\vspace*{-\multicolsep}
+\end{enumerate}
+\end{enumerate}
+
+For non-1\textsc{sg}, the verb is followed by the corresponding subject pronoun: 2\textsc{sg} = \cmubdata{tú}, 3\textsc{sg}, masc. = \cmubdata{sé}, 3\textsc{sg}, fem. = \cmubdata{sí}, 1\textsc{pl} = \cmubdata{muid}, 2\textsc{pl} = \cmubdata{sibh}, 3\textsc{pl}, masc. = \cmubdata{siad}.
+\end{mysolution}
+
+\begin{problem}{\langnameRoro}{\nameVBelikov}{\LOYear{\MSKAbbr}{1991}}
+Here are 11 words in the four dialects of the Roro language and their English translations:
+
+\begin{table}[H]
+\begin{tabular}{ *4{l} l }
+\lsptoprule
+\multicolumn{4}{c}{Dialect} & \\\cmidrule(lr){1-4}
+Hisiu & Delena & Kivori & Paitana & Translation\\\midrule
+\roroline {\pbblank}{aitau}{\pbblank}{\pbblank}{three}
+\roroline {aihi}{aisi}{aihi}{aisi}{crab}
+\roroline {cici}{sisi}{čiči}{cici}{meat}
+\roroline {ebeoahi}{ebeoasi}{ebeoahi}{ebeoaci}{he ran}
+\roroline {hiabu}{siabu}{hiabu}{ciabu}{smoke}
+\roroline {nihe}{nite}{nihe}{nite}{tooth}
+\roroline {icu}{\pbblank}{\pbblank}{icu}{nose}
+\roroline {maciu}{\pbblank}{\pbblank}{\pbblank}{tree}
+\roroline {moihana}{moitana}{moihana}{\pbblank}{look!}
+\roroline {mahi}{\pbblank}{\pbblank}{maci}{beast}
+\roroline {cubu}{subu}{čubu}{cubu}{grass}
+\lspbottomrule
+\end{tabular}
+\end{table}
+
+\begin{assgts}
+\item \fillblanks
+\end{assgts}
+\end{problem}
+
+\begin{mysolution}
+
+In linguistics problems featuring related languages or dialects, the first step is usually figuring out which sounds are different across the data and which remain the same. We start by writing the words for which all four forms are given:
+
+\begin{table}[H]
+\begin{tabular}{lllll}
+\lsptoprule
+\multicolumn{4}{c}{Dialect} & \\\cmidrule(lr){1-4}
+Hisiu & Delena & Kivori & Paitana & Translation\\\midrule
+\roroline {aihi}{aisi}{aihi}{aisi}{crab}
+\roroline {cici}{sisi}{čiči}{cici}{meat}
+\roroline {ebeoahi}{ebeoasi}{ebeoahi}{ebeoaci}{he ran}
+\roroline {hiabu}{siabu}{hiabu}{ciabu}{smoke}
+\roroline {nihe}{nite}{nihe}{nite}{tooth}
+\roroline {cubu}{subu}{čubu}{cubu}{grass}
+\lspbottomrule
+\end{tabular}
+\end{table}
+
+ We should notice that there are some words, like \texttr{crab} and \texttr{he ran}, that have \cmubdata{h} in Hisiu and Kivori, \cmubdata{s} in Delena, and \cmubdata{c} in Paitana. In others, like \texttr{tooth}, Hisiu and Kivori \cmubdata{h} correspond to \cmubdata{t} in Delena and Paitana.
+
+Summing up, we can write the following correspondences, numbered for convenience:
+\vskip-\baselineskip
+\begin{table}[H]
+    \begin{tabular}{ccccc}
+    \lsptoprule
+    & Hisiu & Delena & Kivori & Paitana \\\midrule
+    (1) & \cmubdata{h} & \cmubdata{s} & \cmubdata{h} & \cmubdata{c} \\
+    (2) & \cmubdata{c} & \cmubdata{s} & \cmubdata{č} &  \cmubdata{c} \\
+    (3) &\cmubdata{h} & \cmubdata{t} & \cmubdata{h} & \cmubdata{t} \\
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+
+In other problems of this type, we would need to find the environment in which \cmubdata{h}
+becomes \cmubdata{s} or \cmubdata{t} in Delena (and \cmubdata{c} or \cmubdata{t}
+in Paitana), but, before doing this, it is important to check the tasks
+and see whether we need this type of generalisation.\largerpage[2.5]
+
+\begin{table}[H]
+\setcounter{pbblank}{0}
+\begin{tabular}{lllll}
+\lsptoprule
+\multicolumn{4}{c}{Dialect}  \\\cmidrule(lr){1-4}
+Hisiu & Delena & Kivori & Paitana & Translation\\\midrule
+\roroline {\pbblank}{aitau}{\pbblank}{\pbblank}{three}
+\roroline {icu}{\pbblank}{\pbblank}{icu}{nose}
+\roroline {maciu}{\pbblank}{\pbblank}{\pbblank}{tree}
+\roroline {moihana}{moitana}{moihana}{\pbblank}{look!}
+\roroline {mahi}{\pbblank}{\pbblank}{maci}{beast}
+\lspbottomrule
+\end{tabular}
+\end{table}
+
+On the first row, the only Delena consonant that undergoes any transformation is \cmubdata{t} and, according to the rules above, there is only one transformation that yields the sound \cmubdata{t} in Delena (rule 3). Similarly, for tasks 4--8 there is only one possible transformation of the sound \cmubdata{c} in Hisiu (rule 2). The issue emerges for tasks 9--11 where we are given Hisiu words that contain the sound \cmubdata{h}. Nevertheless, for task 9 we know that the sound \cmubdata{h} in Hisiu becomes \cmubdata{t} in Delena (thus, we know that this is rule 3). As for tasks 10--11, we notice that the Hisiu \cmubdata{h} becomes \cmubdata{c} in Paitana (thus following rule 1). Now we have enough information to solve the tasks and there is no need to identify the environments in which each transformation takes place.
+
+\begin{solutions}
+    \item \hfill
+\begin{tabular}[t]{lllll}
+\lsptoprule
+\multicolumn{4}{c}{Dialect}   \\\cmidrule(lr){1-4}
+Hisiu & Delena & Kivori & Paitana & Translation\\\midrule
+\roroline {aihau}{aitau}{aihau}{aitau}{three}
+\roroline {icu}{isu}{iču}{icu}{nose}
+\roroline {maciu}{masiu}{mačiu}{maciu}{tree}
+\roroline {moihana}{moitana}{moihana}{moitana}{look!}
+\roroline {mahi}{masi}{mahi}{maci}{beast}
+\lspbottomrule
+\end{tabular}\hfill\hbox{}
+
+\end{solutions}
+
+\rules
+
+\begin{center}
+    \begin{tabular}{cccc}
+    \lsptoprule
+    Hisiu & Delena & Kivori & Paitana \\
+    \midrule
+    \cmubdata{h} & \cmubdata{s} & \cmubdata{h} & \cmubdata{c} \\
+    \cmubdata{c} & \cmubdata{s} & \cmubdata{č} & \cmubdata{c} \\
+    \cmubdata{h} & \cmubdata{t} & \cmubdata{h} & \cmubdata{t} \\
+    \lspbottomrule
+    \end{tabular}
+\end{center}
+\end{mysolution}
+
+\hypertarget{phonological-processes}{%
+\section{\texorpdfstring{ Phonological
+processes}{Phonological processes}}}
+
+\begin{sloppypar}
+Below we will present and discuss some of the most common phonological changes. These can be classified into four groups, depending on the effect they have:\largerpage[2]
+\end{sloppypar}
+
+\begin{enumerate}
+\item   \OlympiadNewTerm{Deletion} of a sound. When  the deleted sound is a vowel, you might encounter some more specific terms, such as:
+  \begin{enumerate}
+  \item \OlympiadNewTerm{Aphaeresis}: deletion at the beginning of the word;
+  \item \OlympiadNewTerm{Syncope}: deletion in the middle of the word, especially when another syllable follows the deleted vowel;
+  \item \OlympiadNewTerm{Apocope}: deletion at the end of the word.
+  \end{enumerate}
+
+In linguistics problems, we can use, for simplicity, the term \OlympiadNewTerm{deletion}, as long as we specify where it takes place and in which environment. One common kind of deletion occurs when two identical sounds come in contact with one another. For example, in Ainu, the suffix \cmubdata{-re} becomes \cmubdata{-e} if it is added to a word that already ends in \cmubdata{-r}. Thus, an \cmubdata{r} is deleted in order to avoid two consecutive identical sounds. We can write: \cmubdata{r \rightarrow~$\varnothing$ / r \_ e}.
+\item  \OlympiadNewTerm{Insertion} of a sound, also known as \OlympiadNewTerm{epenthesis}.
+
+In linguistics problems, epenthesis often occurs between two consonants or two vowels, as well as word-initially (this particular type is sometimes called \OlympiadNewTerm{prosthesis}). Thus, if a stem that ends in a consonant adds a suffix that starts with a consonant, it is possible to add an epenthetic vowel (and avoid two consecutive consonants). For example, most English nouns form the plural with the addition of a single consonant (\cmubdata{cats}, \cmubdata{dogs}), but in words like \cmubdata{horses} there is an extra vowel before the plural marker.
+
+The same thing may happen between two vowels, as in British English varieties that have so-called linking and intrusive \cmubdata{r} (an example of intrusive \cmubdata{r} is \cmubdata{drawing} \rightarrow~\cmubdata{draw-\textbf{r}-ing}).
+\item\sloppy  \OlympiadNewTerm{Metathesis} = process that causes the transposition of two or more sounds.
+
+For example, the word \cmubdata{third} suffered a metathesis from Old English (\cmubdata{th\textbf{ri}dda}), in which the sounds \cmubdata{i} and \cmubdata{r} switched places. Although in general, the sounds that switch places are next to one another, there are also cases when metathesis can occur at a considerable distance: for instance, in the Tertenia dialect of Sardinian the word \texttr{belly} occurs as \cmubdata{b\textbf{r}εnti} in isolation but as \cmubdata{(b)εnt\textbf{r}i} after the definite article \cmubdata{sa}.
+
+Another example is the Romanian word \cmubdata{înt\textbf{reg}} (\texttr{whole}). It comes from the Latin word \cmubdata{int\textbf{egr}um} in which the sound \cmubdata{r} and the sequence \cmubdata{eg} switched places.
+\item The last and most important category is that of processes in which one sound is transformed because of another sound in its vicinity. These processes are generally called \OlympiadNewTerm{assimilations}. Assimilations can be classified based on different criteria as follows:\largerpage
+
+\begin{enumerate}
+  \item assimilation can affect both vowels and consonants;
+  \item based on the degree of assimilation we can have total assimilation (in which the target sound becomes completely identical to the trigger) or partial assimilation (in which only certain features are changed);
+  \item based on the position of the sound: contact assimilation (the two sounds are next to one another) or assimilation at a distance. Assimilation at a distance is often referred to as \textit{harmony}; vowel harmony is quite common, while consonant harmony exists, but is relatively rare;
+  \item based on the direction of the assimilation: progressive (in which the sound after is changed as a result of its interaction with a previous sound) or regressive (in which the sound that changes occurs before the sound that triggers the assimilation).
+\end{enumerate}
+
+One of the most common examples of assimilation is the partial assimilation of nasals in consonant clusters, as exemplified before. Nasal consonants are extremely prone to assimilation, and they often assimilate to the place of articulation of the neighbouring consonant. This phenomenon also occurs in English where, for example, \cmubdata{can be} is pronounced {[kæmbi]} in fast speech, in which case the nasal \cmubdata{n} “borrows” the place of articulation from the following consonant (\cmubdata{b}, bilabial) and becomes \cmubdata{m}.
+\end{enumerate}
+
+\begin{problem}{Behaviour of nasal consonants}{\nameTMcCoy}{\LOYear{\NACLOAbbr}{2018}}\largerpage[2.5]
+\begin{assgts}
+\item Below are some Indonesian verbs in their active and passive forms and their English translations. \fillblanks
+
+\begin{table}[H]
+    \begin{tabular}{lll}
+    \lsptoprule
+    Active & Passive & Translation \\\midrule
+    \pbpbsv{meŋuji}{diuji}{to test}
+    \pbpbsv{meŋeja}{dieja}{to spell}
+    \pbpbsv{meŋgaruk}{digaruk}{to scratch}
+    \pbpbsv{mendapat}{didapat}{to obtain}
+    \pbpbsv{memberi}{diberi}{to give}
+    \pbpbsv{menulis}{ditulis}{to write}
+    \pbpbsv{memutus}{diputus}{to cut off}
+    \pbpbsv{\pbblank}{dibuat}{to make}
+    \pbpbsv{\pbblank}{dipilih}{to choose}
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+\vskip-1.5\baselineskip
+\begin{tblsWarning} 
+\explainng{ŋ}.
+\end{tblsWarning}
+
+\item Below are some Mandar words in their active and passive forms, and their English translations. \fillblanks
+
+\begin{center}
+    \begin{tabular}{lll}
+    \lsptoprule
+    Active & Passive & Translation \\\midrule
+    \pbpbsv{mambatta}{dibatta}{to split}
+    \pbpbsv{mandeŋŋeq}{dideŋŋeq}{to carry on the back}
+    \pbpbsv{maŋidaŋ}{diidaŋ}{to crave}
+    \pbpbsv{mappasuŋ}{dipasuŋ}{to send out}
+    \pbpbsv{mattunu}{ditunu}{to burn}
+    \pbpbsv{massiraq}{disiraq}{to tie}
+    \pbpbsv{\pbblank}{ditimbe}{to throw}
+    \pbpbsv{\pbblank}{dipande}{to feed}
+    \lspbottomrule
+    \end{tabular}
+\end{center}
+
+\begin{tblsWarning} 
+\explainng{ŋ}.
+\end{tblsWarning}
+
+\item Below are some words in Quechua in their nominative, genitive and locative (preposition \texttr{in}) form, as well as their English translations. \fillblanks
+
+\begin{table}[H]
+    \begin{tabular}{cccl}
+    \lsptoprule
+    Nominative & Genitive & Locative & Translation \\\midrule
+    \pbpbpbsv{kam}{kamba}{\cellcolor[HTML]{808080}}{you\sg}
+    \pbpbpbsv{atam}{\cellcolor[HTML]{808080}}{atambi}{frog}
+    \pbpbpbsv{hatum}{\pbblank}{\pbblank}{the big one}
+    \pbpbpbsv{sinik}{sinikpa}{\cellcolor[HTML]{808080}}{porcupine}
+    \pbpbpbsv{čilis}{čilispa}{\cellcolor[HTML]{808080}}{streamless region}
+    \pbpbpbsv{sača}{\cellcolor[HTML]{808080}}{sačapi}{jungle}
+    \pbpbpbsv{punǰa}{\cellcolor[HTML]{808080}}{punǰapi}{day}
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+\vskip-1.5\baselineskip
+\begin{tblsWarning} 
+\explainch{č}.
+\end{tblsWarning}
+
+\item Given below are some words in Zoque in their base forms and their 1\textsc{sg} possessive (\texttr{my}), as well as their English translations. \fillblanks
+
+\begin{table}[H]
+    \begin{tabular}{lll}
+    \lsptoprule
+    Base & Possessed & Translation \\\midrule
+    \pbpbsv{burru}{mburru}{donkey}
+    \pbpbsv{pama}{mbama}{clothing}
+    \pbpbsv{tatah}{ndatah}{father}
+    \pbpbsv{faha}{faha}{belt}
+    \pbpbsv{sis}{sis}{meat}
+    \pbpbsv{flawta}{\pbblank}{harmonica}
+    \pbpbsv{šapun}{šapun}{soap}
+    \pbpbsv{disko}{\pbblank}{phonograph record}
+    \pbpbsv{kayu}{ŋgayu}{horse}
+    \pbpbsv{kopak}{\pbblank}{head}
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+
+\begin{tblsWarning} 
+\explainng{ŋ}, \explainsh{š}.
+\end{tblsWarning}
+
+\item Below are given some nouns in Lunyole in their singular and plural forms, as well as their English translations. \fillblanks
+
+\begin{center}
+    \begin{tabular}{lll}
+    \lsptoprule
+    Singular & Plural & Translation \\\midrule
+    \pbpbsv{oludaalo}{endaalo}{day}
+    \pbpbsv{oluboyooboyo}{emboyooboyo}{hullabaloo}
+    \pbpbsv{olufudu}{efudu}{rainbow}
+    \pbpbsv{olukalala}{ekalala}{list}
+    \pbpbsv{olusosi}{\pbblank}{mountain}
+    \pbpbsv{olubafu}{\pbblank}{rib}
+    \pbpbsv{olupagi}{\pbblank}{spoke (of a bike)}
+    \pbpbsv{olutambi}{\pbblank}{candle}
+    \lspbottomrule
+    \end{tabular}
+\end{center}
+
+\item All five of the languages in this problem display processes that avoid a specific type of sound combination. Fill in the blanks to describe this generalisation. The blanks should be chosen from: \textit{vowel}, \textit{consonant}, \textit{nasal}, \textit{voiced consonant}, \textit{voiceless consonant}.
+
+    Avoid having a \pbblank directly followed by a \pbblank.
+
+\end{assgts}
+\end{problem}
+
+\begin{mysolution}
+
+\begin{solutions}
+
+
+\item We notice that the active form is formed from the passive form by replacing the prefix \cmubdata{di} with one of the prefixes:  \cmubdata{meŋ}, \cmubdata{men}, or \cmubdata{mem}. Moreover, we notice that, in certain situations, the first vowel of the root is dropped. We split the given words based on these transformations:
+\begin{center}
+\begin{tabular}{llll}
+\lsptoprule
+ & \cmubdata{meŋ} & \cmubdata{men} & \cmubdata{mem} \\
+ \midrule
+ \multirow{3}{*}{Unchanged stem} & \cmubdata{-uji} & \multirow{3}{*}{\cmubdata{-dapat}} & \multirow{3}{*}{\cmubdata{-beri}} \\
+ & \cmubdata{-eja} & & \\
+ & \cmubdata{-garuk} & & \\
+ Stem drops first consonant & & \cmubdata{-tulis} & \cmubdata{-putus}\\
+ \lspbottomrule
+\end{tabular}
+\end{center}
+
+Looking at the three types of prefix (which only differ by the type of nasal consonant), we expect a nasal assimilation. Thus we notice, indeed, that the place of articulation of the final nasal of the prefix assimilates to the first consonant of the stem. If the stem begins with a vowel, the nasal used is \cmubdata{ŋ}. Moreover, we notice that if the stem begins with a voiceless stop, it gets dropped. Hence, the blanks are (1) \cmubdata{membuat} and (2) \cmubdata{memilih}.
+
+ We can write the rules in different ways:
+
+\begin{itemize}
+\item using words: \cmubdata{di \rightarrow~meN} (\cmubdata{N} is a nasal): \cmubdata{N} assimilates to the place of articulation of the following consonant. If the following sound is a vowel, use \cmubdata{ŋ}. If the root starts with a voiceless stop, the stop is deleted.
+\item using phonological notation:
+% \begin{center}
+%     \mbox{\cmubdata{di \rightarrow~meŋ / \# \_ V}} and \mbox{\cmubdata{di \rightarrow~me\(\begin{bmatrix}\boldsymbol{α\ PLACE}\\
+% \boldsymbol{+ nasal} \\
+% \end{bmatrix}\) / \# \_ \(\begin{bmatrix}
+% \boldsymbol{α\ PLACE} \\
+% \begin{matrix}
+% \boldsymbol{+ voice} \\
+% \boldsymbol{+ stop} \\
+% \end{matrix} \\
+% \end{bmatrix}\)}} and \mbox{\cmubdata{di\(\begin{bmatrix}
+% \boldsymbol{α\ PLACE} \\
+% \begin{matrix}
+% \boldsymbol{- voice} \\
+% \boldsymbol{+ stop} \\
+% \end{matrix} \\
+% \end{bmatrix}\) \rightarrow~ me \(\begin{bmatrix}
+% \boldsymbol{α\ PLACE} \\
+% \boldsymbol{+ nasal} \\
+% \end{bmatrix}\) / \# \_}}
+% \end{center}
+
+\begin{itemize}
+\item
+\phonrule{di}
+        {meŋ}
+        {\#{\longrule}V}
+, and
+\item
+\phonrule{di}
+        {me\featurebox{α PLACE\\
+                        +nasal}}
+        {\#{\longrule}\featurebox{α PLACE\\
+                                    +voice\\
+                                    stop}}
+, and
+\item
+\phonrule{di\featurebox{α PLACE\\
+                        --voice\\
+                        +stop}}
+        {me\featurebox{α PLACE\\
+                        +nasal}}
+        {\#{\longrule}}
+\end{itemize}
+\end{itemize}
+
+\begin{sloppypar}
+These rules can also be written as a process which takes place in three steps:
+\end{sloppypar}
+ 
+\begin{description}
+    \item[Step 1:]   di $\to$ meŋ %         \cmubdata{di \rightarrow~meŋ}
+    \item[Step 2:]
+%     \cmubdata{ŋ \rightarrow~\(\begin{bmatrix}\boldsymbol{α\ PLACE}\\
+% \boldsymbol{+ nasal} \\
+% \end{bmatrix}\) / me \_ \(\begin{bmatrix}\boldsymbol{α\ PLACE}\\
+% \boldsymbol{+ stop} \\
+% \end{bmatrix}\)}
+
+ \phonrule{ŋ}{\featurebox{α PLACE\\+nasal}}{me{\longrule}\featurebox{α PLACE\\+stop}}
+
+\item[Step 3:]
+% % % % \cmubdata{me\(\boldsymbol{{[}+nasal{]}{[}-voice{]}}\) \rightarrow~me\(\boldsymbol{{[}+nasal{]}}\) / \#\_}
+
+\phonrule{me\featurebox{+nasal}\featurebox{--voice}}{me\featurebox{+nasal}}{\#{\longrule}}
+
+\end{description}
+
+In this case, the three steps are: (1) replacing the prefix \cmubdata{di} with \cmubdata{meŋ}, (2) the assimilation of the nasal \cmubdata{ŋ} to the following consonant, and (3) elision of this consonant, if it is
+voiceless.
+
+\item We notice this is a similar process in which the prefix \cmubdata{di} is replaced by one of the prefixes \cmubdata{mam}, \cmubdata{man}, \cmubdata{maŋ}, \cmubdata{map}, \cmubdata{mat}, \cmubdata{mas}. Thus, we notice that we have two types of prefix: \cmubdata{maN} (where \cmubdata{N} is a nasal and hence, we expect it to partially assimilate to the place of articulation, as happened above) and \cmubdata{maX} (where \cmubdata{X} represents the consonant that follows, thus being a total assimilation).
+
+\begin{center}
+    \begin{tabular}{ llll }
+    \lsptoprule
+    \cmubdata{mam} & \cmubdata{man} & \cmubdata{maŋ} & \cmubdata{maX} \\
+    \midrule
+                      &                    &                  & \cmubdata{-pasuŋ} \\
+    \cmubdata{-batta} & \cmubdata{-deŋŋeq} & \cmubdata{-idaŋ} & \cmubdata{-tunu}\\
+                      &                    &                  & \cmubdata{-siraq}\\
+    \lspbottomrule
+    \end{tabular}
+\end{center}
+
+Therefore, as above, there is an assimilation of the nasal consonant if the stem begins with a voiced stop or with a vowel (if it starts with a vowel, the nasal used is \cmubdata{ŋ}). Moreover, we notice that the total assimilation happens if the stem begins with a voiceless stop or with a non-stop consonant (e.g., fricative).
+
+\emph{Note:} Based on the data given, we can generalise that the prefix \cmubdata{maX} occurs if the stem begins with a voiceless consonant. Therefore, the answers are (3) = \cmubdata{mattimbe} and (4) = \cmubdata{mappande}, and the rules are:
+
+\begin{itemize}
+\item using words: \cmubdata{di \rightarrow~maX}
+  \begin{itemize}
+  \item if the stem starts with a voiceless consonant, \cmubdata{X} is identical to the first consonant;
+  \item if stem starts with a vowel, \cmubdata{X} = \cmubdata{ŋ};
+  \item if stem starts with a voiced consonant, \cmubdata{X} is a nasal with the same place of articulation as the first consonant.
+  \end{itemize}
+\item using phonological rules:
+  \begin{itemize}
+  \item
+  % \cmubdata{di\rightarrow~maŋ / \# \_ V}
+  \phonrule{di}{maŋ}{\#{\longrule}V}
+  \item
+%   \cmubdata{di \rightarrow~ma\(\begin{bmatrix}
+%     \boldsymbol{α\ PLACE} \\
+%     \boldsymbol{+ nasal} \\
+%     \end{bmatrix}\) / \# \_}
+%     \(\begin{bmatrix}
+%     \boldsymbol{α\ PLACE} \\
+%     \begin{matrix}
+%     \boldsymbol{+ voice} \\
+%     \boldsymbol{+ stop} \\
+%     \end{matrix} \\
+%     \end{bmatrix}\)
+
+    \phonrule{di}
+             {ma\featurebox{α PLACE\\
+                            +nasal}}
+             {\#{\longrule}\featurebox{α PLACE\\
+                                        +voice\\
+                                        +stop}}
+
+
+
+  \item \phonrule{di}{maC}{\#{\longrule}C} if \cmubdata{C} = \featurebox{--voice}
+
+  \end{itemize}
+\end{itemize}
+
+\item The first observation is that the genitive is formed by adding the suffixes \cmubdata{-pa} or \cmubdata{-ba}, and the locative is formed with the suffixes \cmubdata{-pi} or \cmubdata{-bi}. Therefore, we are only interested in the choice of the consonant (\cmubdata{p} or \cmubdata{b}).
+
+\begin{table}[H]
+    \begin{tabular}{ll}
+    \lsptoprule
+    \cmubdata{p} & \cmubdata{b}\\
+    \midrule
+    \cmubdata{sinik} & \\
+    \cmubdata{čilis} & \cmubdata{kam}\\
+    \cmubdata{sača} & \cmubdata{atam}\\
+    \cmubdata{punǰa} & \\
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+
+Based on these examples, there are multiple possible rules, such as:
+\begin{itemize}
+\item use \cmubdata{b} if the stem ends in \cmubdata{m};
+\item use \cmubdata{b} if the stem ends in a nasal;
+\item use \cmubdata{b} if the stem ends in a voiced consonant (remembering that nasals are voiced);
+\end{itemize}
+
+Since until now the main phenomenon of this problem has been the behaviour of nasals, we choose the second rule, so the answers are (5) = \cmubdata{hatumba} and (6) = \cmubdata{hatumbi} and the rules are:
+
+\begin{center}
+locative: \cmubdata{-pi}, genitive:
+\cmubdata{-pa} \quad\quad\quad\quad
+% \cmubdata{p \rightarrow~b /\(\boldsymbol{{[}+nasal{]} \_}\)}}
+\phonrule{p}{b}{\featurebox{+nasal}{\longrule}}
+\end{center}
+
+\item   This time we notice that the possessive can be marked by a nasal added as a prefix (\cmubdata{m}, \cmubdata{n}, \cmubdata{ŋ}) or it can be unmarked ($\varnothing$). Moreover, the first consonant in the stem can change. For choosing the prefix, we have:
+
+\begin{table}[H]
+    \begin{tabular}{cccc}
+    \lsptoprule
+    \cmubdata{m} & \cmubdata{n} & \cmubdata{ŋ} & $\varnothing$\\\midrule
+    \multirow{3}{*}{    \begin{tabular}{c}
+         \cmubdata{burru}  \\
+         \cmubdata{pama}
+    \end{tabular}
+    } & & & \cmubdata{faha}  \\
+     & \cmubdata{tatah} & \cmubdata{kayu} & \cmubdata{sis}  \\
+     & & &   \cmubdata{šapun}\\
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+
+Thus, we notice that we add a nasal (which assimilates to the place of
+articulation) if the stem begins with a stop; the possessive is unmarked if the stem starts with a fricative.
+
+Regarding the change in the root, we notice: \cmubdata{\textbf{p}ama \rightarrow{} m\textbf{b}ama} and \cmubdata{\textbf{t}atah \rightarrow{} n\textbf{d}atah}. Therefore, if the nasal is added as a prefix, the following consonant will become voiced. Thus, the
+answers are: (7) = \cmubdata{flawta}, (8) = \cmubdata{ndisko}, (9) =
+\cmubdata{ŋgopak}. The rules are:
+
+\begin{itemize}
+  \item if the stem begins with a stop, add a nasal with the same place of articulation before it. Moreover, if the stop at the beginning of the stem is voiceless, it will become voiced.
+
+  This can also be written using phonological notation as:
+
+%       \centerline{\cmubdata{\(\begin{bmatrix}
+%     \boldsymbol{α\ PLACE} \\
+%     \boldsymbol{+ stop} \\
+%     \end{bmatrix}\boldsymbol{\rightarrow}\begin{bmatrix}
+%     \boldsymbol{α\ PLACE} \\
+%     \boldsymbol{+ nasal} \\
+%     \end{bmatrix}\begin{bmatrix}
+%     \boldsymbol{α\ PLACE} \\
+%     \boldsymbol{+ stop} \\
+%     \boldsymbol{+ voice} \\
+%     \end{bmatrix}\) \textbf{/ \# \_}}}
+
+    \phonrule{\featurebox{α PLACE\\
+                          +stop}}
+            {\featurebox{α PLACE\\
+                            +nasal}\featurebox{α PLACE\\
+                                                +stop\\
+                                                +voice}}
+             {\#{\longrule}}
+
+    \item if the stem starts with a fricative, no prefix is added.
+  \end{itemize}
+
+\item For the last part of the problem, we notice that the singular always begins with \cmubdata{olu-} and the plural prefix can be: \cmubdata{e}, \cmubdata{en}, \cmubdata{em}.
+
+\begin{table}[H]
+    \begin{tabular}{ccc}
+    \lsptoprule
+    \cmubdata{e} & \cmubdata{em} & \cmubdata{en}\\
+    \midrule
+    \cmubdata{-fudu} & \multirow{2}{*}{\cmubdata{-boyooboyo}} & \multirow{2}{*}{\cmubdata{-daalo}}  \\
+    \cmubdata{-kalala} & & \\
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+
+
+ We notice that this is a process similar to the one in task (b), where the prefix gets a nasal consonant (which assimilates to the place of articulation) if the stem begins with a voiced stop; otherwise, it only gets the prefix \cmubdata{e-}. Thus, the answers are: (10) =
+\cmubdata{esosi}, (11) = \cmubdata{embafu}, (12) = \cmubdata{epagi}, (13) =
+\cmubdata{etambi} and the rules are:
+
+% \centerline{\mbox{\cmubdata{olu \rightarrow~e\(\begin{bmatrix}
+% \boldsymbol{α\ PLACE} \\
+% \boldsymbol{+ nasal} \\
+% \end{bmatrix}\) / \_  \(\begin{bmatrix}
+% \boldsymbol{α\ PLACE} \\
+% \boldsymbol{+ stop} \\
+% \boldsymbol{+ voice} \\
+% \end{bmatrix}\)}} and \mbox{\cmubdata{olu \rightarrow~e / \_ \(\boldsymbol{[-voice]}\)}}}
+
+\begin{exe}
+\sn
+
+\phonrule{olu}
+        {e\featurebox{α PLACE\\
+                    +nasal}}
+        {{\longrule}\featurebox{α PLACE\\+stop\\+voice}}
+% \end{exe}
+, and
+% \begin{exe}
+% \sn
+
+\phonrule{olu}
+        {e}
+        {{\longrule}\featurebox{--voice}}
+\end{exe}
+
+\item Finally, this task helps us understand the core reason for these transformations. The rule is: ``Avoid having a nasal directly followed by a voiceless consonant.'' Each of the five languages has its own way to deal with that. As such, in task (a) the voiceless stop is deleted; in task (b) the nasal consonant is fully assimilated; in tasks (c) and (d) the voiceless consonant becomes voiced (it assimilates to the voicing of the nasal); in task (e) the nasal consonant is deleted.
+\end{solutions}
+
+\hypertarget{vowel-harmony}{\section{Vowel harmony}\label{sec:4-vowel-harmony}}
+
+A special type of assimilation is \OlympiadNewTerm{vowel harmony}. This process is common to all Turkic languages and dictates the way in which the affixes change form depending on the word to which they are added.  Let us consider the case of Turkish. The Turkish language has eight vowels: \cmubdata{a}, \cmubdata{e}, \cmubdata{i}, \cmubdata{o}, \cmubdata{u}, \cmubdata{ö}, \cmubdata{ü}, \cmubdata{ı} (they correspond to {{[}a{]}}, {{[}e{]}}, {{[}i{]}}, {{[}o{]}}, {{[}u{]}}, {{[}ø{]}}, {{[}y{]}}, and {{[}ɨ{]}}, respectively in IPA), which can be classified based on the three core features (backness, height, roundness):
+
+\begin{table}[H]
+    \begin{tabular}{l *4{c}}
+    \lsptoprule
+    & \multicolumn{2}{c}{Front} & \multicolumn{2}{c}{Back}\\\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+    & Unrounded & Rounded & Unrounded & Rounded \\
+    \midrule
+    Close & \cmubdata{i}& \cmubdata{ü}& \cmubdata{ı}& \cmubdata{u}\\
+    Open & \cmubdata{e}& \cmubdata{ö}& \cmubdata{a}& \cmubdata{o}\\
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+
+Turkish has two types of vowel harmony, involving two different vowel features, i.e., backness and rounding.
+
+The first dictates the assimilation of backness to the added suffix. For example, the plural suffix in Turkish is \cmubdata{-lar} or \cmubdata{-ler}. The suffix \cmubdata{-lar} is used when the word ends in a back vowel, while \cmubdata{-ler} is used if the word ends in a front vowel (\cmubdata{-lar} and \cmubdata{-ler} are called allomorphs, which will be further discussed in the next chapter). Therefore, we have the following pairs of words: \cmubdata{baba} -- \cmubdata{baba\textbf{lar}}, \mbox{\cmubdata{okul} -- \cmubdata{okul\textbf{lar}}}, but \cmubdata{kedi} -- \cmubdata{kedi\textbf{ler}}, \cmubdata{ev} -- \cmubdata{ev\textbf{ler}}. Another suffix that follows this type of vowel harmony is the locative suffix (\texttr{at}/\texttr{in}): \cmubdata{-da} / \cmubdata{-de}.
+
+The second type of vowel harmony dictates the assimilation of roundness but also takes into account the closeness of the vowels. The possessive suffix for 1\textsc{sg} (\texttr{my}) in Turkish has four allomorphs:\footnote{In reality, there is also a fifth form, \cmubdata{-m}, for words ending in a vowel.} \cmubdata{-im}, \cmubdata{-ım}, \cmubdata{-um}, \cmubdata{-üm}. Similarly, the choice of suffix depends on the last vowel of the word, as follows:
+
+\begin{itemize}
+\item if the last vowel is front unrounded, use the form \cmubdata{-im};
+\item if the last vowel is back unrounded, use the form \cmubdata{-ım};
+\item if the last vowel is front rounded, use the form \cmubdata{-üm};
+\item if the last vowel is back rounded, use the form \cmubdata{-um}.
+\end{itemize}
+
+ Briefly, we can also represent this harmony as follows:
+
+ \exrule{
+    \begin{multicols}{4}
+    \begin{itemize}
+        \item[] \cmubdata{\{a, ı\} \rightarrow~ı}
+        \item[] \cmubdata{\{e, i\} \rightarrow~i}
+        \item[] \cmubdata{\{o, u\} \rightarrow~u}
+        \item[] \cmubdata{\{ö, ü\} \rightarrow~ü}
+    \end{itemize}
+    \end{multicols}
+    }
+
+ Therefore, if the last vowel is \cmubdata{a} or \cmubdata{ı}, use the vowel \cmubdata{ı}; if the last vowel is \cmubdata{o} or \cmubdata{u}, use the vowel \cmubdata{u}, and so on. We have the following pairs: \mbox{\cmubdata{ev} -- \cmubdata{ev\textbf{im}}}, \cmubdata{hortum} -- \cmubdata{hortum\textbf{um}}, \cmubdata{raf} -- \cmubdata{raf\textbf{ım}}, \cmubdata{göz} -- \cmubdata{göz\textbf{üm}}.
+
+ Moreover, notice that in Turkish all the vowels in a word have the same backness (the word only contains either front or back vowels). While this is a general trend, there are also exceptions to this rule, especially for words borrowed into Turkish from other languages.
+\end{mysolution}
+
+\begin{problem}{\langnameValleyYokuts}{\namePHelmer}{\LOYear{\RoLOAbbr}{2019}}
+\IntroVerbs{\langnameValleyYokuts}in four different forms \IntroAndEnglish:
+
+\begin{longtable}{ *4{c}l }
+\lsptoprule Dubitative & Passive voice & Non-future & Imperative & Translation \\\midrule\endfirsthead
+\midrule Dubitative & Passive voice & Non-future & Imperative & Translation \\\midrule\endhead
+\roroline{do:sol}{\pbblank}{doshin}{\pbblank}{to report}
+\roroline{\pbblank}{dubut}{dubhun}{dubk\textquoteright a}{to conduct}
+\roroline{yawa:lal}{yawa:lit}{yawalhin}{yawalk\textquoteright a}{to follow}
+\roroline{logwol}{logwit}{logiwhin}{logiwk\textquoteright a}{to pulverise}
+\roroline{wo:nol}{wo:nit}{wonhin}{\pbblank}{to hide}
+\roroline{xatal}{xatit}{xathin}{\pbblank}{to eat}
+\roroline{\pbblank}{\pbblank}{\pbblank}{t\textquoteright oyixk\textquoteright a}{to treat}
+\roroline{\pbblank}{ʔopo:tit}{ʔopothin}{ʔopotk\textquoteright o}{to get out of bed}
+\roroline{ʔugnal}{\pbblank}{ʔugunhun}{\pbblank}{to drink}
+\roroline{\pbblank}{\pbblank}{\pbblank}{ʔilikk\textquoteright a}{to sing}
+\roroline{\pbblank}{lihmit}{lihimhin}{\pbblank}{to run}
+\roroline{\pbblank}{luk\textquoteright lut}{\pbblank}{\pbblank}{to bury}
+\roroline{\pbblank}{k\textquoteright oʔit}{\pbblank}{k\textquoteright oʔk\textquoteright o}{to throw}
+\roroline{me:k\textquoteright al}{\pbblank}{\pbblank}{\pbblank}{to swallow}
+\lspbottomrule
+\end{longtable}
+
+\begin{assgts}
+\item \fillblanks{} If you believe that some blanks could allow multiple answers, write them all.
+\end{assgts}
+
+\begin{tblsWarning}
+\cmubdata{k\textquoteright}, \cmubdata{t\textquoteright}, \cmubdata{x}, \cmubdata{y}, \cmubdata{ʔ} are consonants. The mark \cmubdata{:} after a vowel denotes length.
+\end{tblsWarning}
+\end{problem}
+
+\begin{mysolution}
+
+We begin by segmenting the forms in order to figure out which part is the stem and which are the morphemes corresponding to the four verb forms. We notice that, for two of the verbs, we are given all four forms:
+
+\begin{table}[H]
+\begin{tabular}{*5{l}}
+\lsptoprule
+Dubitative & Passive voice & Non-future & Imperative & Translation \\
+\midrule
+\roroline{yawa:lal}{yawa:lit}{yawalhin}{yawalk\textquoteright a}{to follow}
+\roroline{logwol}{logwit}{logiwhin}{logiwk\textquoteright a}{to pulverise}
+\lspbottomrule
+\end{tabular}
+\end{table}
+
+Comparing these forms, we deduce that the dubitative is formed by adding the suffixes \cmubdata{-al} or \cmubdata{-ol}, the passive voice is formed using the suffix \cmubdata{-it}, the non-future using \cmubdata{-hin} and the imperative using \cmubdata{-k\textquoteright a}. Moreover, we notice that the stems can undergo some changes (for the verb \texttr{to follow} there are two possible stems \cmubdata{yawa:l} and \cmubdata{yawal}, while for the verb \texttr{to pulverise} there is \cmubdata{logw} and \cmubdata{logiw}). Moreover, we notice that, in both cases, the dubitative and passive voice use the same stem, while the other two forms use the “modified” stem.
+
+Looking at the other words in the corpus, we notice that each of the four forms has two possible suffixes: \cmubdata{-al} and \cmubdata{-ol} for
+dubitative, \cmubdata{-it} and \cmubdata{-ut} for passive voice, \cmubdata{-hin} and \cmubdata{-hun} for non-future, and \cmubdata{-k\textquoteright a} and \cmubdata{-k\textquoteright o} for imperative.
+
+Since the passive voice is the one with the most examples, we can start with it. We make a table in which we split the words into two classes, based on the choice of the suffix used in forming the passive voice.
+
+\begin{table}[H]
+    \begin{tabular}{llll}
+    \lsptoprule
+    \multicolumn{2}{c}{\cmubdata{-it}} & \multicolumn{2}{c}{\cmubdata{-ut}}\\
+    \midrule
+     \cmubdata{yawa:lit} & \texttr{to follow}  & \cmubdata{dubut} & \texttr{to conduct} \\
+     \cmubdata{logwit} & \texttr{to pulverise} &  \cmubdata{luk\textquoteright lut} & \texttr{to bury} \\
+     \cmubdata{wo:nit} & \texttr{to hide}      &  & \\
+     \cmubdata{xatit} & \texttr{to eat}        &  & \\
+     \cmubdata{Ɂopo:tit} & \texttr{to get out of bed}  & & \\
+     \cmubdata{lihmit} & \texttr{to run}               & & \\
+     \cmubdata{k\textquoteright oɁit} & \texttr{to throw} & & \\
+     \lspbottomrule
+    \end{tabular}
+\end{table}
+
+We can easily see that the suffix \cmubdata{-ut} is used for the verbs whose stem contains \cmubdata{u}, so this can be viewed as vowel harmony, being a total assimilation of \cmubdata{i} to \cmubdata{u}. This phenomenon can also be written as a phonological rule as follows:
+
+\exrule{\phonrule{it}{ut}{uC\textsubscript{0}{\longrule}\#}}
+
+Since the suffixes corresponding to non-future also feature the vowels \cmubdata{i} and \cmubdata{u}, we expect them to be chosen based on the same rule (or a very similar rule). Indeed, analysing the given examples, we notice that \cmubdata{-hun} is used if the last vowel of the stem is \cmubdata{u}, while \cmubdata{-hin} is used otherwise.
+
+We use the same process for the other two verb forms, the dubitative and the imperative, by making a table for each of them. Moreover, considering that for passive and non-future, the rule was purely phonological, not semantic (it does not depend on the meaning of the word, but rather on the form of the word), in the following table we do not include the translation of the verbs.\largerpage[2.5]
+
+\begin{table}[H]
+\begin{tabular}{ll ll}
+\lsptoprule
+\multicolumn{2}{c}{Dubitative}           & \multicolumn{2}{c}{Imperative} \\\cmidrule(lr){1-2}\cmidrule(lr){3-4}
+\cmubdata{-al} & \cmubdata{-ol}          & \cmubdata{-k\textquoteright a}     & \cmubdata{-k\textquoteright o} \\\midrule
+\cmubdata{yawa:lal} & \cmubdata{do:sol}  & \cmubdata{dubk\textquoteright a}   & \cmubdata{Ɂopotk\textquoteright o} \\
+\cmubdata{xatal} &  \cmubdata{logwol}    & \cmubdata{yawalk\textquoteright a} &  \cmubdata{k\textquoteright oɁk\textquoteright o} \\
+\cmubdata{Ɂugnal} & \cmubdata{wo:nol}    & \cmubdata{logiwk\textquoteright a} \\ 
+\cmubdata{me:k\textquoteright al} &      & \cmubdata{t\textquoteright oyixk\textquoteright a} \\ 
+                                  &      & \cmubdata{Ɂilikk\textquoteright a} \\ 
+\lspbottomrule
+\end{tabular}                             
+\end{table}
+
+We notice this is a similar phenomenon. The allomorph containing \cmubdata{o} of the dubitative and imperative suffixes (\cmubdata{-ol} and
+\cmubdata{-k\textquoteright o}, respectively) is used if the last vowel of the stem is \cmubdata{o}, so it is a total assimilation of the vowel \cmubdata{a} (or a vowel harmony).
+
+Thus, we can sum up the information we have so far in the following table:
+
+\begin{table}[H]
+    \begin{tabular}{ *5{c} }
+    \lsptoprule
+    Last vowel & Dubitative & Passive voice & Non-future & Imperative \\\midrule
+    \cmubdata{o} & \cmubdata{-ol} & \cmubdata{-it} & \cmubdata{-hin} & \cmubdata{-k\textquoteright o}\\
+    \cmubdata{u} & \cmubdata{-al} & \cmubdata{-ut} & \cmubdata{-hun} & \cmubdata{-k\textquoteright a}\\
+    else & \cmubdata{-al} & \cmubdata{-it} & \cmubdata{-hin} & \cmubdata{-k\textquoteright a}\\
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+
+Alternatively, we can consider the four basic suffixes: \cmubdata{-al}, \cmubdata{-it}, \cmubdata{-hin}, \cmubdata{-k'a} and the following phonological rules:
+
+\begin{itemize*}[itemjoin={\quad\quad\quad}]
+%     \item[] \cmubdata{a \rightarrow~o / oC\textsubscript{0} \_}
+%     \item[] \cmubdata{i \rightarrow~u / uC\textsubscript{0} \_}
+\item \phonrule{a}{o}{oC\textsubscript{0}{\longrule}} \item \phonrule{i}{u}{uC\textsubscript{0}{\longrule}}
+\end{itemize*}
+
+We are left to discover the way in which the stem changes. We noticed at the beginning of the solution that we have three situations: (1) the stem is unchanged for all forms, (2) the stem for dubitative and passive has a long vowel, which becomes short for non-future and imperative, (3) there is a vowel added (epenthesis) for non-future and imperative.
+
+We make a new table with these three situations:
+
+\begin{table}[H]
+    \begin{tabular}{ccc}
+    \lsptoprule
+    Unchanged & \cmubdata{V: \rightarrow~V} & Epenthesis \\\midrule
+        \cmubdata{dub}                 & \cmubdata{do:s}   & \cmubdata{logw \rightarrow~logiw} \\ 
+        \cmubdata{xat}                 & \cmubdata{yawa:l} & \cmubdata{Ɂugn \rightarrow~Ɂugun} \\ 
+        \cmubdata{k\textquoteright oɁ} & \cmubdata{wo:n}   & \cmubdata{lihm \rightarrow~lihim} \\
+                                       & \cmubdata{Ɂopo:t} &                                   \\
+     \lspbottomrule
+   \end{tabular}
+\end{table}
+
+We notice that we have three outcomes, based on the last syllable of the stem:
+
+\begin{itemize}
+\item If the last syllable contains a short vowel and ends in a consonant (CVC), then the stem is left unchanged;
+\item If the last syllable contains a long vowel and ends in a consonant (CV:C), then the vowel becomes short for non-future and imperative (CVC);
+\item If the last syllable contains a short vowel and ends in a consonant cluster (CVCC), then in non-future and imperative an (epenthetic) vowel is added between the two consonants. From the examples above, we notice that the epenthetic vowel is either \cmubdata{i} or \cmubdata{u}, so we can expect that the choice of vowel will be the same as above (\cmubdata{u} if the last vowel in the stem is \cmubdata{u}, otherwise \cmubdata{i}).
+\end{itemize}
+
+Therefore, we have discovered all the rules and we can complete all the tasks.
+
+\begin{solutions}
+\item
+    \begin{tabular}[t]{llll}
+    1. \cmubdata{do:sit} &  2. \cmubdata{dosk\textquoteright o} & 3. \cmubdata{dubal} & 4. \cmubdata{wonk\textquoteright o} \\
+    5. \cmubdata{xatk\textquoteright a} &   &  & 8. \cmubdata{t\textquoteright oyixhin} \\
+    9. \cmubdata{Ɂopo:tol} &  10. \cmubdata{Ɂugnut} & 11. \cmubdata{Ɂugunk\textquoteright a} &  \\
+     &  14. \cmubdata{Ɂilikhin} & 15. \cmubdata{lihmal} & 16. \cmubdata{lihimk\textquoteright a} \\
+    17. \cmubdata{luk\textquoteright lal} &  18. \cmubdata{luk\textquoteright ulhun} & 19. \cmubdata{luk\textquoteright ulk\textquoteright a} & 20. \cmubdata{k\textquoteright oɁol} \\
+    21. \cmubdata{k\textquoteright oɁhin} &  22. \cmubdata{me:k\textquoteright it} & 23. \cmubdata{mek\textquoteright hin} & 24. \cmubdata{mek\textquoteright k\textquoteright a} \\
+    \end{tabular}
+
+ For the blanks 6--7 and 12--13, we have multiple options since we do not know the underlying form of the stem. The stems of the imperative form (\cmubdata{t\textquoteright oyix} and \cmubdata{Ɂilik}) could be the result of three different processes:
+
+\begin{enumerate}[leftmargin=0pt]
+    \item We could consider an epenthetic process which causes the insertion of the vowel \cmubdata{i}, therefore the underlying stems are \cmubdata{t\textquoteright oyx} and \cmubdata{Ɂilk}. In this case, the answers are:
+
+    \begin{center}
+    \begin{tabular}{llll}
+        6. \cmubdata{t\textquoteright oyxol} &
+        7. \cmubdata{t\textquoteright oyxit} &
+        12. \cmubdata{Ɂilkal}                &
+        13. \cmubdata{Ɂilki}                 \\
+    \end{tabular}
+    \end{center}
+    \item We could also consider the case in which the stem undergoes no change, therefore the underlying stems are \cmubdata{t\textquoteright oyix} and \cmubdata{Ɂilik}. The answers would then be:
+    
+    \begin{center}
+    \begin{tabular}{llll}
+        6. \cmubdata{t\textquoteright oyixal} &
+        7. \cmubdata{t\textquoteright oyixit} &
+        12. \cmubdata{Ɂilikal}                &
+        13. \cmubdata{Ɂiliki}                 \\
+    \end{tabular}
+    \end{center}
+    
+    \item Lastly, the stem might have undergone vowel shortening. We can infer based on the given data that the long vowel is always the last vowel of the stem. Thus, the underlying stems are \cmubdata{t\textquoteright oyi:x} and \cmubdata{Ɂili:k} and the answers are:
+
+    \begin{center}
+        \begin{tabular}{llll}
+          6. \cmubdata{t\textquoteright oyi:xal} &
+          7. \cmubdata{t\textquoteright oyi:xit} &
+          12. \cmubdata{Ɂili:kal}                &
+          13. \cmubdata{Ɂili:ki}                 \\
+         \end{tabular}
+    \end{center}
+\end{enumerate}
+\end{solutions}
+
+\rules
+
+There are two types of rule: stem changes (depending on the type of the last syllable of the stem) and suffix changes (depending on the last
+vowel of the stem).
+
+\begin{enumerate}
+\item Stem changes. Take place only in non-future and imperative:
+
+  \begin{enumerate}
+  \item \cmubdata{CV:C \rightarrow~CVC} (vowel shortening);
+  \item \cmubdata{CVCC \rightarrow~ CVCV\textsubscript{e}C} (epenthesis);
+    \cmubdata{V\textsubscript{e}} follows the vowel harmony (see below);
+  \end{enumerate}
+\item Suffixes: dubitative = \cmubdata{-al}, passive voice = \cmubdata{-it}, non-future = \cmubdata{hin}, imperative = \cmubdata{k\textquoteright a}.
+\item Vowel harmony. Applied both to the suffixes and to the epenthetic vowel:
+
+  \begin{enumerate}
+  \item If last vowel of the root is \cmubdata{o}: \cmubdata{a \rightarrow~o};
+  \item If last vowel of the root is \cmubdata{u}: \cmubdata{i \rightarrow~u};
+  \end{enumerate}
+\end{enumerate}
+\end{mysolution}
+
+\begin{discussion}
+\begin{sloppypar}
+It is interesting to consider the reason why the stem changes occur. These changes only happen for non-future and imperative, and these are the only forms for which the corresponding suffixes begin with a consonant. Thus, the epenthesis (rule 1b) is rather common, and it is used to avoid a three-consonant cluster, since this would impede the pronunciation.
+\end{sloppypar}
+
+The vowel shortening, on the other hand, highlights a much more interesting phenomenon which can be connected to syllable weight. Remember that in the previous chapter, we classified syllables into four types, depending on vowel length and on the existence of a coda. In this language, it would appear that syllables which have both a long vowel and a consonant are not allowed; moreover, the onset and the coda cannot be complex (cannot be formed by consonant clusters). Let us analyse each transformation.
+
+\subsection*{Vowel shortening}
+Let us consider a \cmubdata{CV:C} stem. For the dubitative and passive (whose suffixes begin with a vowel), we would find words of the shape \cmubdata{CV:CVC}. Therefore, based on the basic syllabification rules, we would obtain \cmubdata{CV:.CVC}, the first syllable having a long vowel (but no coda), while the second has a coda (but only a short vowel).
+
+For the other two forms, whose suffixes begin with a consonant, we would get words like *\cmubdata{CV:CCVC}, and, by syllabifying them, we would get *\cmubdata{CV:C.CVC}. Since the language does not allow \cmubdata{CV:C} syllables, the vowel shortening emerges, resulting in the
+form \cmubdata{CVC.CVC}.
+
+\note{An asterisk (*) before a word/sentence shows that it is not grammatically correct or is not attested in the
+language.}
+
+\subsection*{Epenthesis}
+
+For \cmubdata{CVCC} type stems, in the case of dubitative and passive, whose suffixes begin with a vowel, we get words like \cmubdata{CVCCVC}, which, after syllabification, results in \cmubdata{CVC.CVC}. On the other hand, for the other two forms, we obtain \cmubdata{*CVCCCVC}, which, after syllabification, would result in \cmubdata{*CVC.CCVC} or \cmubdata{*CVCC.CVC}. In both cases, either the onset or the coda would have a consonant cluster, which is not allowed in the language. Therefore, an epenthetic vowel is added, resulting in the word \cmubdata{CVCV\textsubscript{e}CCVC \rightarrow~CV.CV\textsubscript{e}C.CVC}.
+
+Therefore, we can posit that the two root change phenomena take place in order to avoid consonant clusters or super-heavy syllables (having both a long vowel and a coda).
+
+These observations also help us understand why for blanks 6--7 and 12--13 the first vowel of the stem cannot be long (i.e., we cannot consider answers such \cmubdata{t\textquoteright o:yixal} and \cmubdata{t\textquoteright o:yi:xal} to be correct). If the first vowel of the stem were long, there would be no reason for it to be shortened in the imperative form since the environment in which it appears does not change.
+
+Moreover, if this is true, it means that the verbal stems (\cmubdata{CV:C} and \cmubdata{CVCC}) are not single words, since their structure would not be allowed.
+\end{discussion}
+
+\begin{problem}{\langnameEvenki}{\nameVNeacsu}{\wordoriginal}
+Given below are some words in Evenki in five different cases: nominative singular (e.g., \texttr{the dog}), nominative plural (e.g., \texttr{the dogs}), directional-locative singular (e.g., \texttr{to the dog}), possessive 1\textsc{sg} (e.g., \texttr{my dog}), possessive 1\textsc{pl} (e.g., \texttr{our dog}), as well as their English translations:
+
+\begin{table}[H]
+\begin{tabular}{ *6{l} }
+\lsptoprule
+Nom. \textsc{sg} & Nom. \textsc{pl} & Dir-loc. \textsc{sg} & Pos. 1\textsc{sg} & Pos. 1\textsc{pl} & Transl. \\\midrule
+\evenkiline{bitəg}{bitəgsəl}{bitəglə}{bitəgwi}{bitəgmʉn}{book}
+\evenkiline{bɵ:s}{bɵ:ssɵl}{bɵ:slɵ}{bɵ:swi}{\pbblank}{cloth}
+\evenkiline{udun}{udunsul}{\pbblank}{udunbi}{udunmun}{rain}
+\evenkiline{igga}{iggasal}{iggala}{iggawi}{iggamun}{flower}
+\evenkiline{ixʉldʉ:r}{ixʉldʉ:rsʉl}{ixʉldʉ:rlɵ}{ixʉldʉ:rwi}{ixʉldʉ:rmʉn}{shovel}
+\evenkiline{nʉxʉn}{nʉxʉnsʉl}{nʉxʉnlɵ}{nʉxʉnbi}{nʉxʉnmʉn}{brother}
+\evenkiline{oron}{oronsol}{oronlo}{oronbi}{oronmun}{place}
+\evenkiline{satan}{satansal}{satanla}{satanbi}{satanmun}{candy}
+\evenkiline{təggəŋ}{təggəŋsəl}{təggəŋlə}{təggəŋbi}{təggəŋmʉn}{car}
+\evenkiline{ʉ:ŋkʉ}{ʉ:ŋkʉsʉl}{ʉ:ŋkʉlɵ}{ʉ:ŋkʉwi}{ʉ:ŋkʉmʉn}{towel}
+\evenkiline{xocco}{xoccosol}{xoccolo}{xoccowi}{xoccomun}{shop}
+\evenkiline{iggə}{iggəsəl}{\pbblank}{\pbblank}{iggəmʉn}{tail}
+\evenkiline{jʉ:}{\pbblank}{jʉ:lɵ}{\pbblank}{jʉ:mʉn}{house}
+\evenkiline{xə:m}{\pbblank}{\pbblank}{\pbblank}{\pbblank}{meal}
+\evenkiline{do:son}{\pbblank}{\pbblank}{\pbblank}{\pbblank}{salt}
+\lspbottomrule
+\end{tabular}
+\end{table}
+
+\begin{assgts}
+\item \fillblanks
+\item You are given some more Evenki words in the same five forms: 
+\end{assgts}
+
+\begin{table}[H]
+\begin{tabular}{ *6{l} }
+\lsptoprule
+Nom. \textsc{sg} & Nom. \textsc{pl} & Dir-loc. \textsc{sg} & Pos. 1\textsc{sg} & Pos. 1\textsc{pl} & Translation \\\midrule
+\evenkiline{umatta}{umattasul}{umattalo}{umattawi}{umattamun}{egg}
+\evenkiline{a:gun}{a:gunsal}{a:gunla}{a:gunbi}{a:gunmun}{hat}
+\evenkiline{ʉrəl}{ʉrəlsʉl}{ʉrəllɵ}{ʉrəlwi}{ʉrəlmʉn}{child}
+\evenkiline{moriŋ}{moriŋsol}{moriŋlo}{moriŋbi}{moriŋmun}{horse}
+\evenkiline{xɵ:ggʉ}{\pbblank}{\pbblank}{\pbblank}{\pbblank}{leg}
+\evenkiline{oʃitta}{\pbblank}{\pbblank}{\pbblank}{\pbblank}{star}
+\evenkiline{xərʉ:ldi:}{\pbblank}{\pbblank}{\pbblank}{\pbblank}{quarrel}
+\lspbottomrule
+\end{tabular}
+\end{table}
+
+\begin{assgts}
+\item[] \fillblanks
+\end{assgts}
+
+\begin{tblsWarning}
+\cmubdata{ʉ} and \cmubdata{ɵ} are vowels pronounced like \cmubdata{u} and \cmubdata{o} respectively, but with the tongue placed centrally (central vowels); \cmubdata{a} is similar to \texttr{u} in \texttr{cut}, but the tongue is placed more towards the back (back vowel); \explainschwa{ə}, \explainng{ŋ}, \explainsh{ʃ}.
+
+The mark \cmubdata{:} after a vowel denotes length.
+\end{tblsWarning}
+
+\end{problem}
+
+\begin{mysolution}
+
+ We start by noticing that the nominative singular can be considered the base form. From this word, all other forms are derived. Moreover, we notice that there are no changes (alternations) in this form, so we can consider it as the stem of all other forms.
+
+ The next step is separating the segments that are added to obtain the other forms. So for the nominative plural we have the suffixes \cmubdata{-sal}, \cmubdata{-səl}, \cmubdata{-sol}, \cmubdata{-sul}, \cmubdata{-sɵl}, \cmubdata{-sʉl}. Such a variety of suffixes which only differ by the vowel is a strong indicator towards some process of vowel harmony. Therefore, we can classify the words based on the suffix they select for the nominative plural form.
+
+\begin{table}[H]
+    \begin{tabular}{llllll}
+    \lsptoprule
+    \cmubdata{-sal} & \cmubdata{-səl} & \cmubdata{-sol} & \cmubdata{-sul} & \cmubdata{-sɵl} & \cmubdata{-sʉl} \\
+    \midrule
+    \cmubdata{igga}   & \cmubdata{bitəg}   & \cmubdata{oron}  & \cmubdata{udun} &  \cmubdata{bɵ:s} &  \cmubdata{ixʉldʉ:r} \\ 
+    \cmubdata{satan}  & \cmubdata{təggəŋ}  & \cmubdata{xocco} &                 &                  &  \cmubdata{nʉxʉn} \\ 
+                      & \cmubdata{iggə}    &                  &                 &                  &  \cmubdata{ʉ:ŋkʉ}  \\
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+
+ Indeed, the supposition of vowel harmony is easily confirmed. We can observe that the vowel in the suffix is identical to the last vowel of the stem. Therefore, we deduce that the nominative plural suffix is \cmubdata{-sVl}, where \cmubdata{V} is the last vowel of the stem. Since the suffix repeats the final stem vowel in all cases, we can talk here about a total assimilation rather than vowel harmony.
+
+ We can do the same thing for the other three forms. For the directional-locative singular form, we find the suffixes \cmubdata{-la}, \cmubdata{-lə}, \cmubdata{-lo}, \cmubdata{-lɵ}.
+
+\begin{table}[H]
+    \begin{tabular}{llll}
+    \lsptoprule
+    \cmubdata{-la} & \cmubdata{-lə} & \cmubdata{-lo} & \cmubdata{-lɵ} \\\midrule
+    \cmubdata{igga}    & \cmubdata{bitəg}    & \cmubdata{oron}    & \cmubdata{bɵ:s} \\ 
+    \cmubdata{satan}   & \cmubdata{təggəŋ}   & \cmubdata{xocco}   & \cmubdata{ixʉldʉ:r} \\ 
+                       &                     &                    & \cmubdata{nʉxʉn} \\ 
+                       &                     &                    & \cmubdata{ʉ:ŋkʉ} \\ 
+                       &                     &                    & \cmubdata{jʉ:} \\
+    \lspbottomrule
+ \end{tabular}
+\end{table}
+
+ In this case, we can assume that, similar to the previous situation, the choice of the suffix is based on the last vowel of the stem. We notice that the suffixes \cmubdata{-la} and \cmubdata{-lə} are used if the last vowel of the root is \cmubdata{a} or \cmubdata{ə}, respectively, so again we can talk about total assimilation. Nevertheless, the suffix \cmubdata{-lɵ} is used both for words whose last vowel is \cmubdata{ɵ}, as well as \cmubdata{ʉ}. Since we have no example of words whose last vowel is \cmubdata{u}, although these are found as a task, we can assume that they will receive the suffix \cmubdata{-lo}, since we can expect that the
+pairs \{\cmubdata{ɵ}, \cmubdata{ʉ}\} and \{\cmubdata{o}, \cmubdata{u}\} behave similarly. Therefore, in this case we can talk about vowel harmony as follows: \cmubdata{a \leftarrow~\{a\}}, \cmubdata{ə \leftarrow~\{ə\}}, \cmubdata{o \leftarrow~\{o, u\}}, and \cmubdata{ɵ \leftarrow~\{ɵ, ʉ\}}. We can write the rules for this harmony in different ways:
+
+\begin{itemize}
+\item using words: vowel harmony based on backness and roundness -- rounded vowels with the same level of backness will use a suffix containing the corresponding high vowel.
+\item schematically, showing the vowel in the suffix and the group of vowels for which it is used: \cmubdata{a \leftarrow~\{a\}}, \cmubdata{ə \leftarrow~\{ə\}}, \cmubdata{o \leftarrow~\{o, u\}}, and \cmubdata{ɵ \leftarrow~\{ɵ, ʉ\}}.
+\item using phonological rules:
+\end{itemize}
+% \centerline{\mbox{\cmubdata{\(\begin{matrix} V \\ \boldsymbol{[+ round]} \\\end{matrix} \rightarrow~\begin{matrix}
+% V \\
+% \begin{bmatrix}
+% \boldsymbol{+ high }\\
+% \boldsymbol{α~backness}\\
+% \end{bmatrix} \\
+% \end{matrix}\ /\ \begin{matrix}
+% V \\
+% \begin{bmatrix}
+% \boldsymbol{+ round} \\
+% \boldsymbol{α\ backness} \\
+% \end{bmatrix} \\\end{matrix} C\textsubscript{0}\ \_ \)}}}
+
+\exrule{\begin{tabular}[c]{@{}c@{}}
+         V\\
+         $\left[\begin{tabular}{@{\,}>{\scshape}c@{\,}}+round\end{tabular}\right]$\\
+         ~ \\
+         \end{tabular}
+         $\to$
+         \begin{tabular}[c]{@{}c@{}}
+         V\\
+         $\left[\begin{tabular}{@{\,}>{\scshape}c@{\,}}+high\\α backness\end{tabular}\right]$
+         \end{tabular}
+         /
+        \begin{tabular}[c]{@{}c@{}}
+         V\\
+         $\left[\begin{tabular}{@{\,}>{\scshape}c@{\,}}+round\\α backness\end{tabular}\right]$
+        \end{tabular}
+        C\textsubscript{0}{\longrule}
+}
+
+This rule can be interpreted as: ``a round vowel will become high and will have the same level of backness as the vowel before it if it is round''. Generally, it is better not to use phonological notation when it comes to vowel harmony, because they can become extremely complex and there is a lot of room for error.
+
+The 1\textsc{sg} possessive has only two forms: \cmubdata{-bi} and \cmubdata{-wi}. This time, we do not expect vowel harmony since the vowel in both forms is the same, and it is the consonant that changes. We can make a table to see the distribution of the two suffixes:
+
+\begin{table}[H]
+    \begin{tabular}{ll}
+    \lsptoprule
+    \cmubdata{-bi} & \cmubdata{-wi} \\\midrule
+    \cmubdata{udun}   &   \cmubdata{bitəg} \\ 
+    \cmubdata{nʉxʉn}  &   \cmubdata{bɵ:s}  \\ 
+    \cmubdata{oron}   &   \cmubdata{igga} \\ 
+    \cmubdata{satan}  &   \cmubdata{ixʉldʉ:r} \\ 
+    \cmubdata{təggəŋ} &   \cmubdata{ʉ:ŋkʉ} \\ 
+                      &   \cmubdata{xocco}\\
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+
+We can easily observe that the suffix \cmubdata{-bi} is used if the last consonant of the stem is \cmubdata{n} or \cmubdata{ŋ}. Therefore, we can consider the base form of the suffix to be \cmubdata{-wi}, and
+%  \mbox{\cmubdata{w \rightarrow~b / n \_}} or \mbox{\cmubdata{w \rightarrow~b / \(\boldsymbol{{[}+nasal{]}}\) \_}}.
+ \phonrule{w}{b}{\{n, ŋ\}\longrule} or \phonrule{w}{b}{\featurebox{+nasal}\longrule}
+
+ The last form is the 1\textsc{pl} possessive, where we only have only two forms: \cmubdata{-mun} and \cmubdata{-mʉn}.
+
+\begin{table}
+    \begin{tabular}{cc}
+    \lsptoprule
+    \cmubdata{-mun} & \cmubdata{-mʉn} \\\midrule
+    \cmubdata{udun}  &   \cmubdata{bitəg} \\ 
+    \cmubdata{igga}  &   \cmubdata{ixʉldʉ:r}  \\ 
+    \cmubdata{oron}  &   \cmubdata{nʉxʉn} \\ 
+    \cmubdata{satan} &   \cmubdata{təggəŋ} \\ 
+    \cmubdata{xocco} &   \cmubdata{ʉ:ŋkʉ} \\ 
+                     &   \cmubdata{iggə} \\ 
+                     &   \cmubdata{jʉ:} \\
+     \lspbottomrule
+    \end{tabular}
+\end{table}
+
+ We can again assume it is vowel harmony, and we can try and test if this hypothesis makes sense from a phonological perspective. Based on the given examples, we deduce that \cmubdata{u \leftarrow~\{a, o, u\}}, \cmubdata{ʉ \leftarrow~\{ə, ʉ\}}. Based on the footnote at the end of the problem, we know that \cmubdata{a} is a back vowel (similar to \cmubdata{o} and \cmubdata{u}), while \cmubdata{ʉ} is a central vowel (just like \cmubdata{ə}). Therefore, this harmony is solely based on backness. Moreover, we deduce that \cmubdata{ɵ} will go into the same class as \cmubdata{ʉ}, since it is also a central vowel. Therefore, the 1\textsc{pl} possessive suffix is \cmubdata{-mun} if the last vowel of the root is back or \cmubdata{-mʉn} if the last vowel is central.
+
+ Based on these, we can write all the rules and solve task (a):
+
+\begin{solutions}
+\item
+\begin{tabular}[t]{llll}
+    1. \cmubdata{bɵ:smʉn} & 2. \cmubdata{udunlo} & 3. \cmubdata{iggələ} & 4. \cmubdata{iggəwi} \\
+    5. \cmubdata{jʉ:sʉl} & 6. \cmubdata{jʉ:wi} & 7. \cmubdata{xə:msəl} & 8. \cmubdata{xə:mlə} \\
+    9. \cmubdata{xə:mbi} & 10. \cmubdata{xə:mmʉn} & 11. \cmubdata{do:sonsol} & 12. \cmubdata{do:sonlo} \\
+    13. \cmubdata{do:sonbi} & 14. \cmubdata{do:sonmun} & &  \\
+\end{tabular}
+\end{solutions}
+
+\rules
+
+\begin{enumerate}
+    \item \emph{Suffixes}:
+
+     \begin{itemize}
+        \item[] Nom. \textsc{pl} = \cmubdata{sV\textsubscript{1}l}
+        \item[] Dir-loc. \textsc{pl} = \cmubdata{lV\textsubscript{2}}
+        \item[] Pos. 1\textsc{sg} = \cmubdata{wi} and \cmubdata{w \rightarrow~b / }\textsc{{[}+nasal{]}} \_
+        \item[] Pos. 1\textsc{pl} = \cmubdata{mV\textsubscript{3}n}
+    \end{itemize}
+    \item \emph{Vowel harmony}:
+           \begin{tabular}[t]{ccccccc}
+            \lsptoprule
+                                          & \multicolumn{6}{c}{Last vowel of the stem}\\\cmidrule(lr){2-7}
+                                          & \cmubdata{ə} & \cmubdata{ɵ} &\cmubdata{ʉ} &\cmubdata{a} &\cmubdata{o} &\cmubdata{u} \\\midrule
+            \cmubdata{V\textsubscript{1}} & \cmubdata{ə} & \cmubdata{ɵ} &\cmubdata{ʉ} &\cmubdata{a} &\cmubdata{o} &\cmubdata{u} \\
+            \cmubdata{V\textsubscript{2}} & \cmubdata{ə} & \cmubdata{ɵ} & \cmubdata{ɵ} &\cmubdata{a} & \cmubdata{o} & \cmubdata{o} \\
+            \cmubdata{V\textsubscript{3}} & \cmubdata{ʉ} & \cmubdata{ʉ} & \cmubdata{ʉ} & \cmubdata{u} & \cmubdata{u} & \cmubdata{u} \\
+            \lspbottomrule
+        \end{tabular}
+\end{enumerate}
+
+ It is time to analyse the examples given in task (b). We expect that the rules are mostly similar and perhaps undergo only small changes or some exceptions. Indeed, looking at the given forms, we notice that the suffixes do not change and the nominative singular form is the base form. Nevertheless, it seems that the vowel harmony does not apply here anymore.
+
+Since we know the nominative plural results from a total assimilation, we can start here and notice the changes that took place, since each suffix corresponds to only one vowel.
+
+\begin{table}[H]
+    \begin{tabular}{ll}
+    \lsptoprule
+       Nom. \textsc{sg}  & Nom. \textsc{pl} \\
+       \midrule
+       \cmubdata{umatta} & \cmubdata{umattasul} \\
+       \cmubdata{a:gun} & \cmubdata{a:gunsal} \\
+       \cmubdata{ʉrəl} & \cmubdata{ʉrəlsʉl} \\
+       \cmubdata{moriŋ} & \cmubdata{moriŋsol} \\
+   \lspbottomrule
+    \end{tabular}
+\end{table}
+
+ In the case of the first word, since the nominative plural suffix contains the vowel \cmubdata{u}, we expect the last vowel of the stem to also be \cmubdata{u}. Nevertheless, the only vowel \cmubdata{u} in the stem is at the beginning, Therefore, we might consider that vowel harmony is, in fact, triggered by the first vowel of the stem, not the last one. Indeed, this easily checks out for all examples in task (b). The formation of 1\textsc{sg} possessive is not affected since the choice of the suffix is independent of the vowel.
+
+ On the other hand, since we changed the rule, and we noticed that vowel harmony is triggered by the first vowel, we need to double-check whether the examples in task (a) still follow this rule. Fortunately, we notice that most of the words in task (a) are monosyllabic (hence have only one vowel) or, if they have more vowels, they contain the same vowel. There are only four exceptions: \cmubdata{bitəg}, \cmubdata{igga}, \cmubdata{ixʉldʉ:r}, and \cmubdata{iggə}. We notice that all of these words have \cmubdata{i} as their first vowel. Moreover, the vowel \cmubdata{i} does not appear in any of the three vowel harmony patterns from before. Therefore, we can deduce that the vowel \cmubdata{i} is neutral and does not trigger (nor affect) vowel harmony. We can therefore rephrase the rules above and claim that vowel harmony is triggered by the first vowel in the stem \emph{which is not \cmubdata{i}}.
+
+Therefore, we can solve task (b).
+
+\begin{solutions}[resume]
+\item
+\begin{tabular}[t]{@{}lll@{}}
+    15. \cmubdata{xɵ:ggʉsɵl} & 16. \cmubdata{xɵ:ggʉlɵ} & 17. \cmubdata{xɵ:ggʉwi} \\
+    18. \cmubdata{xɵ:ggʉmʉn} & 19. \cmubdata{oʃittasol} & 20. \cmubdata{oʃittalo} \\
+    21. \cmubdata{oʃittawi} & 22. \cmubdata{oʃittamun} & 23. \cmubdata{xərʉ:ldi:səl} \\
+    24. \cmubdata{xərʉ:ldi:lə} & 25. \cmubdata{xərʉ:ldi:wi} & 26. \cmubdata{xərʉ:ldi:mʉn} \\
+\end{tabular}
+\end{solutions}
+\end{mysolution}
+
+\begin{discussion}
+The Evenki language is an extremely interesting example since it features three rare characteristics:
+
+\begin{enumerate}
+\item Vowel harmony is triggered by the first vowel and not the last vowel (as is common in Turkic and Mongolic languages).
+\item The language has three different types of vowel harmony, each of them occurring in different contexts:
+
+  \begin{enumerate}
+  \item total vowel harmony (total assimilation) -- used, for example, to
+    form the plural;
+  \item harmony that only affects round vowels, based on backness;
+  \item harmony based on backness that affects all vowels, independent of roundness.
+  \end{enumerate}
+\item There is a neutral vowel (\cmubdata{i}) which neither triggers nor affects vowel harmony.
+\end{enumerate}
+\end{discussion}
+
+\hypertarget{initial-consonant-mutation}{%
+\section{\texorpdfstring{Initial consonant mutation}{Initial consonant mutation}}}
+
+Initial consonant mutation is a phenomenon occurring, for example, in Celtic languages (Irish, Breton, Manx, etc.). In these languages, the first consonant of words can undergo certain transformations (called mutations) based on the grammatical context. The context in which the first consonant mutates is variable; it could be depending on possession (e.g., \texttr{my} vs. \texttr{his}), on the numeral that follows (e.g., there might be one form for numerals 1-4 and another form for numerals 5-9), etc.
+
+In linguistics problems, if the initial consonant mutation is featured, some mutation examples will be given (in specific contexts), and you will be asked to deduce the mutation other consonants undergo. Let us consider the following example from Welsh (it is known that \cmubdata{c} is pronounced like \texttr{c} in \texttr{car}):
+
+\begin{table}[H]
+    \begin{tabular}{ccc}
+        \lsptoprule
+      Context 1 & Context 2 & Context 3\\
+      \midrule
+      \cmubdata{p} & \cmubdata{b} & \cmubdata{mh} \\
+      \cmubdata{c} & \cmubdata{g} & \cmubdata{ngh} \\
+      \cmubdata{t} &  &  \\
+      \lspbottomrule
+    \end{tabular}
+\end{table}
+
+ We can see that in the first context, there are only voiceless stops, which, in the second context, become voiced (therefore, based on the pairs \cmubdata{p -- b} and \cmubdata{c -- g}, we can infer that the consonant \cmubdata{t} in the second context will mutate to \cmubdata{d}). In the third context, we notice that there are only nasal consonants (followed by \cmubdata{h}). Therefore, we can deduce that \cmubdata{t} will become \cmubdata{nh} in the third context.
+
+Therefore, in all contexts, the place of articulation is preserved, and it is only the manner of articulation and voicing that change (voiceless stop – voiced stop – voiceless nasal).
+
+An example of a problem which features initial consonant mutation is 5.16.
+
+\hypertarget{practice-problems}{%
+\section{Practice problems}}
+
+\begin{problem}{\langnameLaMi}{\nameEKorovina}{\LOYear{\MSKAbbr}{2013}}
+Here are some words and expressions in Guoyu, the Taiwanese dialect of Mandarin Chinese, as well as their correspondences in the secret language La-Mi (both transcribed into Latin script):
+
+\begin{table}[H]
+\begin{tabular}{lll}
+    \lsptoprule
+    Guoyu & \langnameLaMi & Translation \\\midrule
+    \pbpbsv{e hiau}{le i liau hi}{capable}
+    \pbpbsv{be ts\textquoteright ai}{\pbblank}{to go shopping}
+    \pbpbsv{\pbblank}{lat t\textquoteright it}{to hit}
+    \pbpbsv{ts\textquoteright in t\textquoteright iam}{\pbblank}{very tired}
+    \pbpbsv{\pbblank}{laŋ gin}{human}
+    \pbpbsv{gi}{\pbblank}{justice}
+    \pbpbsv{piaʔ}{liaʔ piʔ}{wall}
+    \pbpbsv{kam tsia}{lam kin lia tsi}{sugarcane}
+    \pbpbsv{p\textquoteright ɔŋ hɔŋ}{lɔŋ p\textquoteright in lɔŋ hin}{gust (of wind)}
+    \pbpbsv{ho k\textquoteright eʔ}{\pbblank}{guest of honour}
+    \pbpbsv{pak k\textquoteright ak}{lak pit lak k\textquoteright it}{to clean}
+    \pbpbsv{tsap ap}{\pbblank}{ten boxes}
+    \lspbottomrule
+\end{tabular}
+\end{table}
+
+\begin{assgts}
+\item \fillblanks
+\end{assgts}
+
+\begin{tblsWarning}
+All vowel combinations are pronounced as a single syllable (syllables are separated by blanks); \cmubdata{p\textquoteright}, \cmubdata{t\textquoteright}, \cmubdata{k\textquoteright}, \cmubdata{ts\textquoteright}, \cmubdata{ʔ} are consonants; \cmubdata{ɔ} is a vowel; \explainng{ŋ}.
+\end{tblsWarning}
+\end{problem}
+
+\begin{problem}{\langnameTolaki}{\namePArkadiev}{\LOYear{\MSKAbbr}{2016}}
+\IntroVerbs{\langnameTolaki} in their active and passive voice \IntroAndEnglish:
+
+\begin{longtable}{lll lll}
+    \lsptoprule     Active & Passive & Translation & Active & Passive & Translation \\\cmidrule(lr){1-3}\cmidrule(lr){4-6}\endfirsthead
+    \midrule Active & Passive & Translation & Active & Passive & Translation \\\cmidrule(lr){1-3}\cmidrule(lr){4-6}\endhead
+    \pbpbsvnoem{alo}{inalo}{take} & \pbpbsvnoem{wala}{niwala}{enclose} \\
+    \pbpbsvnoem{daga}{nidaga}{guard} & \pbpbsvnoem{baho}{\pbblank}{bathe} \\
+    \pbpbsvnoem{ehe}{inehe}{want} & \pbpbsvnoem{inu}{\pbblank}{drink} \\
+    \pbpbsvnoem{geru}{nigeru}{scrape} & \pbpbsvnoem{kulisi}{\pbblank}{dig} \\
+    \pbpbsvnoem{hunu}{hinunu}{burn} & \pbpbsvnoem{mala}{\pbblank}{shorten} \\
+    \pbpbsvnoem{luarako}{niluarako}{grab} & \pbpbsvnoem{paho}{\pbblank}{plant} \\
+    \pbpbsvnoem{oli}{inoli}{fly} & \pbpbsvnoem{ruru}{\pbblank}{collect} \\
+    \pbpbsvnoem{saru}{sinaru}{borrow} & \pbpbsvnoem{solongako}{\pbblank}{empty} \\
+    \pbpbsvnoem{tena}{tinena}{order} & \pbpbsvnoem{usa}{\pbblank}{crush} \\
+    \lspbottomrule
+\end{longtable}
+
+\begin{assgts}
+\item \fillblanks
+\item At first, the author wanted to include the following example, but they changed their mind believing it can be confusing. Why might this be?
+\end{assgts}
+\begin{center}
+    \begin{tabular}{lll}
+        \pbpbsv{nahu}{ninahu}{cook}
+    \end{tabular}
+\end{center}
+
+\begin{tblsWarning}
+\explainv{w}
+\end{tblsWarning}
+\end{problem}
+
+\begin{problem}{Sorba}{\nameJHenderson}{\LOYear{\UKLOAbbr}{2010}}
+Minangkabau is a language of Indonesia that features a number of “play lan\-guages” that people use for fun, like Pig Latin in English. One of these “play languages” is Sorba. Here are some examples of standard Minangkabau words and their Sorba play language equivalents:\footnote{\textit{Source:} \nameJHenderson, University of Western Australia, with the assistance of Sophie Crouch. Based on Crouch (2008, 2009) and data from the MPI EVA Minangkabau corpus.}
+
+\begin{longtable}{ *6{l} }
+    \lsptoprule
+     Minang- &       &         & Minang- &       &         \\
+     kabau   & Sorba & English & kabau   & Sorba & English \\\cmidrule(r){1-3}\cmidrule(l){4-6}\endfirsthead
+     \midrule
+     Minang- &       &         & Minang- &       &         \\
+     kabau   & Sorba & English & kabau   & Sorba & English \\\cmidrule(r){1-3}\cmidrule(l){4-6}\endhead
+     \pbpbsvnoem{raso}{sora}{taste} & \pbpbsvnoem{mangecek}{cermange}{talk} \\
+     \pbpbsvnoem{rokok}{koro}{cigarette} & \pbpbsvnoem{bakilek}{lerbaki}{lightning} \\
+     \pbpbsvnoem{rayo}{yora}{celebrate} & \pbpbsvnoem{sawah}{warsa}{rice field} \\
+     \pbpbsvnoem{susu}{sursu}{milk} & \pbpbsvnoem{pitih}{tirpi}{money} \\
+     \pbpbsvnoem{baso}{sorba}{language} & \pbpbsvnoem{manangih}{ngirmana}{cry} \\
+     \pbpbsvnoem{lamo}{morla}{long time} & \pbpbsvnoem{urang}{raru}{person} \\
+     \pbpbsvnoem{mati}{tirma}{dead} & \pbpbsvnoem{cubadak}{darcuba}{jackfruit} \\
+     \pbpbsvnoem{bulan}{larbu}{month} & \pbpbsvnoem{iko}{kori}{this} \\
+     \pbpbsvnoem{minum}{nurmi}{drink} & \pbpbsvnoem{gata-gata}{targa-targa}{flirtatious} \\
+     \pbpbsvnoem{lilin}{lirli}{wax} & \pbpbsvnoem{maha-maha}{harma-harma}{expensive} \\
+     \pbpbsvnoem{mintak}{tarmin}{request} & \pbpbsvnoem{campua}{purcam}{mix} \\
+     \pbpbsvnoem{apa}{para}{father} & && \\
+     \lspbottomrule
+\end{longtable}
+
+\begin{assgts}
+\item Write the Sorba equivalents of the following words:
+
+\begin{center}
+    \begin{tabular}{l@{\hskip0.5in}l}
+    \cmubdata{rancak} (\texttr{nice}) & \cmubdata{jadi} (\texttr{happen}) \\
+    \cmubdata{makan} (\texttr{eat}) &  \cmubdata{marokok} (\texttr{smoking}) \\
+    \cmubdata{ampek} (\texttr{hundred}) & \cmubdata{limpik-limpik} (\texttr{stuck together}) \\
+    \cmubdata{dapua} (\texttr{kitchen}) & \\
+    \end{tabular}
+\end{center}
+    
+
+\item If you know a Sorba word, can you work backwards to a single standard Minangkabau word? Demonstrate with the Sorba word \cmubdata{lore} (\texttr{good}).
+\item Another “play language”\ is Solabar. The rules for converting a standard Minangkabau word to Solabar can be worked out from the following examples:
+
+\begin{center}
+    \begin{tabular}{lll}
+    \lsptoprule
+         Minangkabau & Solabar & English \\\cmidrule(r){1-3}
+         \pbpbsv{baso}{solabar}{language}
+         \pbpbsv{campua}{pulacar}{mix}
+         \pbpbsv{makan}{kalamar}{eat}
+         \lspbottomrule
+    \end{tabular}
+\end{center}
+\item[] What is the Solabar equivalent of the Sorba word \cmubdata{tirpi} (\texttr{money})?
+\item\sloppy In writing Minangkabau, does the sequence \cmubdata{ng} represent one sound or two sounds? Provide evidence that supports your answer.
+\end{assgts}
+
+\end{problem}
+
+\begin{problem}{\langnameArabic}{\nameASomin}{\ElementyAbbr}
+Here are some Arabic nouns in their definite and indefinite form, as well as their English translations:\largerpage
+
+\begin{table}[H]
+\begin{tabular}{llllll}
+    \lsptoprule
+     Indefinite & Definite & Translation & Indefinite & Definite & Translation \\
+     \cmidrule(lr){1-3}\cmidrule(lr){4-6}
+     \pbpbsvnoem{šams}{aššams}{sun} & \pbpbsv{ɣayma}{alɣayma}{cloud}
+     \pbpbsvnoem{qamar}{alqamar}{moon} & \pbpbsv{ma\d{t}ar}{alma\d{t}ar}{rain}
+     \pbpbsvnoem{naǯm}{annaǯm}{star} & \pbpbsv{\d{t}aqs}{a\d{t}\d{t}aqs}{weather}
+     \pbpbsvnoem{faǯr}{alfaǯr}{dawn} & \pbpbsv{ǯafāf}{alǯafāf}{draught}
+     \pbpbsvnoem{yawm}{alyawm}{day} & \pbpbsv{bard}{albard}{coldness}
+     \pbpbsvnoem{\d{ð}alām}{a\d{ð}\d{ð}alām}{darkness} & \pbpbsv{taham}{attaham}{heat}
+     \pbpbsvnoem{samāʹ}{assamāʹ}{sky} & \\
+     \lspbottomrule
+\end{tabular}
+\end{table}
+
+Arabic linguists classify the consonants into ``lunar'' and ``solar'' consonants. It is known that \cmubdata{š} and \cmubdata{t} are solar consonants, while \cmubdata{q} and \cmubdata{m} are lunar consonants.
+
+\begin{assgts}
+    \item Write the definite form of the following nouns:
+\begin{multicols}{2}
+\noindent\begin{itemize}[noitemsep]
+    \item[] \cmubdata{muðannab} (\texttr{comet})
+    \item[] \cmubdata{barq} (\texttr{lightning})
+    \item[] \cmubdata{θalǯ} (\texttr{ice})
+    \item[] \cmubdata{nār} (\texttr{fire})
+    \item[] \cmubdata{\d{d}aw'} (\texttr{light})
+    \item[] \cmubdata{layla} (\texttr{night})
+    \item[] \cmubdata{ɣurūb} (\texttr{sunrise})
+    \item[] \cmubdata{šitā'} (\texttr{winter})
+    \item[] \cmubdata{rabīʕ} (\texttr{spring})
+    \item[] \cmubdata{\d{s}ayf} (\texttr{summer})
+    \item[] \cmubdata{xarīf} (\texttr{autumn})
+    \blankitem
+\end{itemize}
+\end{multicols}
+
+\item Classify the consonants \cmubdata{b}, \cmubdata{\d{d}}, \cmubdata{f}, \cmubdata{ɣ}, \cmubdata{n}, \cmubdata{r}, \cmubdata{θ}, \cmubdata{y} and \cmubdata{z} into the two categories proposed by Arabic linguists (solar and lunar). 
+\item Arab language historians know that the sound represented by one of the Arabic letters was, in time, replaced by another one (in this problem the modern variant is used). Determine which letter it is.
+\end{assgts}
+
+\begin{tblsWarning}
+\explainsh{š}, \explaindzh{ǯ}, \explainj{y}, \explainthat{ð}, \explainthin{θ}, \cmubdata{q} = \texttr{c} in \texttr{car}, \cmubdata{x} = \texttr{ch} in \texttr{loch}, \cmubdata{ɣ} is similar to \cmubdata{x}, but voiced. \cmubdata{ʕ} and \cmubdata{'} are consonants. 
+
+A dot below a consonant denotes its special pronunciation (so-called \-emphat\-ic). A bar above the vowel denotes length.
+\end{tblsWarning}
+
+\end{problem}
+
+\begin{problem}{\langnameSesotho}{\nameTKrashtan}{\LOYear{\UkrLOAbbr}{2021}}
+Sesotho is primarily spoken in two countries: South Africa and Lesotho. As a result, two different orthographies are used for this language. For example, the word \texttr{ostrich} is written \cmubdata{mpjhe} in South Africa, but \cmubdata{mpshe} in Lesotho.
+
+Below are given some words in Sesotho. Some of them are written in one of the orthographies (whether South Africa or Lesotho), while others are written in both orthographies. Two of the words are the same in both orthographies. 
+
+\begin{exe}
+    \begin{multicols}{4}
+        \sn[]{\cmubdata{oache}    }
+        \sn[]{\cmubdata{Kholu}    }
+        \sn[]{\cmubdata{kalima}   }
+        \sn[]{\cmubdata{kutloisiso}}
+        \sn[]{\cmubdata{kadima}   }
+        \sn[]{\cmubdata{kgwedi}   }
+        \sn[]{\cmubdata{nwa}      }
+        \sn[]{\cmubdata{yohle}    }
+        \sn[]{\cmubdata{'nete}    }
+        \sn[]{\cmubdata{Kgodu}    }
+        \sn[]{\cmubdata{lula}     }
+        \sn[]{\cmubdata{hlompshoa}}
+        \sn[]{\cmubdata{nkwe}     }
+        \sn[]{\cmubdata{ya}       }
+        \sn[]{\cmubdata{titjhere} }
+        \sn[]{\cmubdata{phela}    }
+        \sn[]{\cmubdata{nkoe}     }
+        \sn[]{\cmubdata{tjhelete} }
+        \sn[]{\cmubdata{cha}      }
+        \sn[]{\cmubdata{nnete}    }
+        \sn[]{\cmubdata{Mokgatjhane}}
+        \sn[]{\cmubdata{nngwaya}  }
+        \sn[]{\cmubdata{chelete}  }
+        \sn[]{\cmubdata{ntate}    }
+        \sn[]{\cmubdata{'me}      }
+        \sn[]{\cmubdata{ea}       }
+        \sn[]{\hphantom{a}        }
+    \end{multicols}
+\end{exe}
+
+
+\begin{assgts}
+\item For each of the words, determine in which orthography it is written. For the words written in only one of the two orthographies, provide their equivalent in the other one. 
+\item In which orthography are the words \cmubdata{joang} and \cmubdata{shwa} written?
+\end{assgts}
+\end{problem}
+
+\begin{problem}{\langnameDutch}{\nameKGilyarova}{\LOYear{\MSKAbbr}{2003}}
+The Dutch language uses suffixes to form the diminutives of nouns. Any Dutch noun can be transposed to its diminutive form. Below are some Dutch words together with their diminutive forms and their English translation:
+
+\begin{table}[H]
+\fittable{\begin{tabular}{ *6{l} }
+\lsptoprule
+Word & Diminutive & Transl. & Word & Diminutive & Transl. \\\cmidrule(lr){1-3}\cmidrule(lr){4-6}
+\pbpbsvnoem{leeuwerik}{leeuwerikje}{lark} & \pbpbsv{dag}{dagje}{day}
+\pbpbsvnoem{trom}{trommetje}{drum} & \pbpbsv{stro}{strootje}{straw}
+\pbpbsvnoem{peer}{peertje}{pear} & \pbpbsv{vrucht}{vruchtje}{fruit}
+\pbpbsvnoem{snor}{snorretje}{moustache} & \pbpbsv{steeg}{\pbblank}{alley}
+\pbpbsvnoem{huis}{huisje}{house} & \pbpbsv{steg}{\pbblank}{way}
+\pbpbsvnoem{potlood}{potloodje}{pencil} & \pbpbsv{bioscoop}{\pbblank}{cinema}
+\pbpbsvnoem{paraplu}{parapluutje}{umbrella} & \pbpbsv{deur}{\pbblank}{door}
+\pbpbsvnoem{viool}{viooltje}{violin} & \pbpbsv{auto}{\pbblank}{car}
+\pbpbsvnoem{tuin}{tuintje}{garden} & \pbpbsv{zoon}{\pbblank}{son}
+\pbpbsvnoem{ster}{sterretje}{star} & \pbpbsv{zon}{\pbblank}{sun}
+\pbpbsvnoem{komkommer}{komkommertje}{cucumber} & \pbpbsv{mus}{\pbblank}{sparrow}
+\pbpbsvnoem{sla}{slaatje}{salad} & \pbpbsv{winkel}{\pbblank}{store}
+\pbpbsvnoem{kam}{kammetje}{comb} & \pbpbsv{bal}{\pbblank}{ball}
+\pbpbsvnoem{web}{webje}{internet} & \pbpbsv{ballet}{\pbblank}{ballet}
+\pbpbsvnoem{pin}{pinnetje}{pin} & \pbpbsv{pyjama}{\pbblank}{pyjamas}
+\pbpbsvnoem{verhaal}{verhaaltje}{story} & \pbpbsv{schim}{\pbblank}{ghost}
+\pbpbsvnoem{wodka}{wodkaatje}{vodka} & \pbpbsv{\pbblank}{petje}{beret}
+\lspbottomrule
+\end{tabular}}
+\end{table}
+
+\begin{assgts}
+\item \fillblanks
+\item The word \cmubdata{vlootje} is a homonym, representing the diminutive of two different words. Which are these words?
+\end{assgts}
+\end{problem}
+
+\begin{problem}{\langnameFinnish\ -- \langnameEstonian}{\nameVNeacsu}{\LOYear{\HKLOAbbr}{2021}}
+Here are some words in Finnish (F) and Estonian (E), declined for the nominative, genitive, and illative cases:\footnote{\textit{Source:} Adapted after a problem by Andrei Zaliznyak (published in \textit{Задачи лингвистических олимпиад 1965--1975} (\textit{Problems for the Linguistics Olympiad 1965--1975}), Moscow, 2007.}\\
+
+
+\begin{tabular}{@{}l@{\hskip0.09in}c@{\hskip0.09in}c@{\hskip0.09in}c@{\hskip0.09in}c@{\hskip0.09in}c@{\hskip0.09in}c}
+    \lsptoprule
+     & \multicolumn{2}{c}{Nominative} & \multicolumn{2}{c}{Genitive} & \multicolumn{2}{c}{Illative} \\\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+    {English} & F & E & F & E & F & E \\\midrule
+    \feline{people}{rahvas}{rahvas}{\pbblank}{rahvas}{\pbblank}{\pbblank}
+    \feline{naked}{\pbblank}{\pbblank}{paljaan}{\pbblank}{paljaaseen}{paljasse}
+    \feline{row}{\pbblank}{toores}{tuoreen}{toore}{tuoreeseen}{tooresse}
+    \feline{axe}{kirves}{kirves}{\pbblank}{\pbblank}{kirveeseen}{\pbblank}
+    \feline{ready}{valmis}{\pbblank}{valmiin}{valmi}{\pbblank}{valmisse}
+    \feline{part}{osa}{\pbblank}{osan}{osa}{osaan}{ossa}
+    \feline{city}{linna}{\pbblank}{linnan}{linna}{\pbblank}{linna}
+    \feline{village}{külä}{külä}{külän}{küla}{külään}{\pbblank}
+    \feline{shelter}{maja}{maja}{majan}{maja}{majaan}{majja}
+    \feline{ace}{\pbblank}{äss}{\pbblank}{\pbblank}{ässään}{ässa}
+    \feline{wheel}{püörä}{\pbblank}{\pbblank}{\pbblank}{\pbblank}{\pbblank}
+    \feline{snow}{lumi}{lumi}{lumen}{\pbblank}{lumeen}{lumme}
+    \feline{horn}{sarvi}{sarv}{\pbblank}{sarve}{sarveen}{sarve}
+    \feline{cape}{niemi}{neem}{niemen}{neeme}{\pbblank}{neeme}
+    \feline{hackberry}{\pbblank}{toom}{\pbblank}{toome}{\pbblank}{\pbblank}
+    \feline{sea}{\pbblank}{\pbblank}{\pbblank}{\pbblank}{\pbblank}{merre}
+    \lspbottomrule
+\end{tabular}
+
+\begin{assgts}
+\item \fillblanks
+\end{assgts}
+
+\begin{tblsWarning}
+For this problem the orthography of Finnish has been slightly changed. In reality, the character denoted here by \cmubdata{ü} is written as \cmubdata{y}.
+\end{tblsWarning}
+\end{problem}
+
+\begin{problem}{\langnameBari}{\nameJPetr}{\LOYear{\CLOAbbr}{2019}}
+Given below are some verbal roots in Bari, together with two different forms, as well as their English translations. The shaded cells represent forms that are not essential for solving the problem (they may exist). 
+
+\begin{table}[H]
+\begin{tabular}{lllcl}
+    \lsptoprule
+    Root & Form 1 & Form 2 & Tone & Translation \\\midrule
+    \roroline{dé̱ʔ}{dí̱lí̱kí̱n}{\cellcolor[HTML]{808080}}{}{to bend}
+    \roroline{kú̱r}{kú̱rà̱kí̱n}{kú̱rà̱râ̱ʔ}{}{to borrow}
+    \roroline{'dó̱k}{'dú̱kú̱kí̱n}{\cellcolor[HTML]{808080}}{}{to carry}
+    \roroline{mók}{mòkákìn}{mòkáràʔ}{}{to catch}
+    \roroline{\pbblank}{tú̱kú̱kí̱n}{tó̱kó̱rô̱ʔ}{}{to cut with an axe}
+    \roroline{\pbblank}{\pbblank}{tòjúpùrùʔ}{}{to dress}
+    \roroline{yúk}{yùkúkìn}{yùkúrùʔ}{}{to shepherd}
+    \roroline{'dép}{'dépákín}{\pbblank}{}{to hold}
+    \roroline{gáʔ}{\pbblank}{\cellcolor[HTML]{808080}}{g}{to seek}
+    \roroline{lú̱sà̱k}{\pbblank}{\cellcolor[HTML]{808080}}{}{to defrost}
+    \roroline{sà̱pû̱k}{\pbblank}{\pbblank}{}{to return}
+    \roroline{'yút}{'yùtúkìn}{\pbblank}{}{to seed}
+    \roroline{tò̱kû̱}{tò̱kú̱kì̱n}{tò̱kú̱à̱rà̱ʔ}{t}{to preach}
+    \roroline{bú̱dú̱}{bú̱dú̱kí̱n}{\cellcolor[HTML]{808080}}{}{to reach the top}
+    \roroline{báʔ}{bàlákìn}{\cellcolor[HTML]{808080}}{}{to punish}
+    \roroline{só̱n}{sú̱nyú̱kí̱n}{só̱nyó̱rô̱ʔ}{}{to send (something)}
+    \roroline{yà̱kî̱}{yà̱kí̱kì̱n}{yà̱kí̱à̱rà̱ʔ}{}{to send (someone)}
+    \roroline{dòdông'}{dòdóng'àkìn}{dòdóng'àràʔ}{}{to shake}
+    \roroline{\pbblank}{'bórókín}{\cellcolor[HTML]{808080}}{}{to smear}
+    \roroline{lì̱lî̱ng'}{lì̱lí̱ng'à̱kì̱n}{\pbblank}{}{to exterminate}
+    \roroline{ré̱m}{rí̱mí̱kí̱n}{\cellcolor[HTML]{808080}}{}{to inject}
+    \roroline{bérén}{\pbblank}{\cellcolor[HTML]{808080}}{}{to poison}
+    \roroline{\pbblank}{lókín}{\cellcolor[HTML]{808080}}{}{to dry in the sun}
+    \roroline{dwán}{dwànyákìn}{\cellcolor[HTML]{808080}}{}{to open}
+    \roroline{lák}{\pbblank}{lákárâʔ}{}{to untie}
+    \roroline{dó̱k}{\pbblank}{\cellcolor[HTML]{808080}}{g}{to unpack}
+    \lspbottomrule
+\end{tabular}
+\end{table}\largerpage
+
+\begin{assgts}
+\item Bari verbs can be classified into two groups, based on their tone. Fill in the column “Tone”, specifying whether the verb has the tone \cmubdata{g} (it behaves like \cmubdata{gáʔ} and \cmubdata{dó̱k}) or \cmubdata{t} (it behaves like \cmubdata{tò̱kû̱}).
+
+\item \fillblanks
+\end{assgts}
+
+\begin{tblsWarning}
+\cmubdata{'b}, \cmubdata{'d}, \cmubdata{'y}, \cmubdata{ng'}, \cmubdata{ny}, \cmubdata{y}, \cmubdata{ʔ} are consonants. A line below a vowel denotes that the vowel is pronounced with an advanced tongue root (+ATR). The marks {\char"25CC\char"301}, {\char"25CC\char"300} and {\char"25CC\char"302} above a vowel denote high, low and falling tones, respectively.
+\end{tblsWarning}
+\end{problem}
+
+\begin{problem}{\langnameTicuna}{\nameTKobayashi}{\LOYear{\APLOAbbr}{2021}}
+\IntroWordComb{\langnameTicuna}\ \IntroAndEnglish: 
+\begin{center}
+    
+
+\begin{longtable}{ll}
+     \pbsv{ˈka̰\textsuperscript{1} a\textsuperscript{5} tɨ\textsuperscript{3}}{ka̰\textsuperscript{1} tree leaves} \\
+     \pbsv{ˈku\textsuperscript{43} te\textsuperscript{4} e\textsuperscript{3} ɟa̰\textsuperscript{1}}{your husband's sister} \\
+     \pbsv{ˈku\textsuperscript{43} ʔa̰\textsuperscript{1}}{your mouth} \\
+     \pbsv{ˈku\textsuperscript{43} ʔu\textsuperscript{4} ne\textsuperscript{1}}{your entire body} \\
+     \pbsv{na\textsuperscript{4} ˈme\textsuperscript{43} ʔe\textsuperscript{5} tʃi\textsuperscript{1}}{it is really good} \\
+     \pbsv{na\textsuperscript{4} ˈbu\textsuperscript{3} ʔu\textsuperscript{1} ra\textsuperscript{1}}{it is sort of immature} \\
+     \pbsv{ˈto\textsuperscript{5} ne\textsuperscript{1}}{owl monkey's tree trunk} \\
+     \pbsv{ˈtɨ\textsuperscript{2} ʔe\textsuperscript{1} a\textsuperscript{1} ne\textsuperscript{1}}{cassava garden} \\
+     \pbsv{ˈto̰\textsuperscript{1} ʔtʃi\textsuperscript{5} ru\textsuperscript{1}}{owl monkey's clothes} \\
+     \pbsv{ˈto\textsuperscript{1} ʔo̰\textsuperscript{1}}{other one's mouth} \\
+     \pbsv{ˈto̰\textsuperscript{1} ʔo\textsuperscript{5} tʃi\textsuperscript{1}}{really an owl monkey} \\
+     \pbsv{ˈtʃau\textsuperscript{1} ʔtʃi\textsuperscript{5} ru\textsuperscript{1}}{my clothes} \\
+     \pbsv{ˈtʃo\textsuperscript{1} ʔma̰\textsuperscript{1} ne\textsuperscript{1}}{my wife's tree trunk} \\
+     \pbsv{ˈtʃo\textsuperscript{1} me\textsuperscript{4} na\textsuperscript{2} ʔã\textsuperscript{2}}{my stick} \\
+     \pbsv{ˈto\textsuperscript{1} bɨ\textsuperscript{2}}{other one's high-starch food} \\
+     \pbsv{ˈtʃo\textsuperscript{1} pa\textsuperscript{3} tɨ\textsuperscript{4}}{my fingernail} \\
+     \pbsv{ˈtʃau\textsuperscript{1} e\textsuperscript{3} ɟa̰\textsuperscript{1} te\textsuperscript{4}}{my sister's husband} \\
+     \pbsv{na\textsuperscript{4} ˈtʃḭ\textsuperscript{1} bɨ\textsuperscript{2}}{its high-starch food is delicious} \\
+     \pbsv{na\textsuperscript{4} ˈtʃo\textsuperscript{5} o\textsuperscript{1} ne\textsuperscript{1} ʔɨ\textsuperscript{1} ra\textsuperscript{1}}{its garden is sort of white} \\
+     \pbsv{ˈŋo\textsuperscript{3} ʔo̰\textsuperscript{1} a\textsuperscript{1} ne\textsuperscript{1}}{place where there are lots of ŋo\textsuperscript{3} ʔo̰\textsuperscript{1}} \\
+\end{longtable}
+\end{center}
+
+\begin{assgts}
+\item What is the \textit{literal} translation of \cmubdata{ˈŋo\textsuperscript{3} ʔo̰\textsuperscript{1} a\textsuperscript{1} ne\textsuperscript{1}}?
+
+\pagebreak
+\item \transinen
+\begin{multicols}{2}
+\begin{enumerate}
+    \item \cmubdata{ˈka\textsuperscript{5} ne\textsuperscript{1}}
+    \item \cmubdata{na\textsuperscript{4} ˈtʃo̰\textsuperscript{1} o\textsuperscript{5} tɨ\textsuperscript{3}}
+    \item \cmubdata{ˈŋo\textsuperscript{3} ʔo̰\textsuperscript{1} ʔɨ\textsuperscript{5} tʃi\textsuperscript{1}}
+    \item \cmubdata{ˈto\textsuperscript{1} o\textsuperscript{1} ne\textsuperscript{1}}
+    \item \cmubdata{ˈto̰\textsuperscript{1} ʔo\textsuperscript{4} ne\textsuperscript{1}}
+    \item \cmubdata{ˈtʃau\textsuperscript{1} ne\textsuperscript{1}}
+\end{enumerate}
+\end{multicols}
+
+\item \transinen[\langnameTicuna]
+\begin{enumerate}[start = 7]
+    \item \texttr{it is sort of delicious}
+    \item \texttr{its clothes are really white}
+    \item \texttr{my husband's entire body}
+    \item \texttr{my high-starch food}
+\end{enumerate}
+\end{assgts}
+\largerpage[2]
+
+\begin{tblsWarning}
+\cmubdata{tʃ}, \cmubdata{ɟ}, \cmubdata{ŋ}, and \cmubdata{ʔ} are consonants; \cmubdata{ɨ} is a vowel; \cmubdata{au} is a diphthong: consider it as one vowel. The mark {ˈ} indicates that the following syllable is stressed.
+{{\char"25CC\textsuperscript{1}}}, {{\char"25CC\textsuperscript{2}}}, {{\char"25CC\textsuperscript{3}}}, {{\char"25CC\textsuperscript{4}}}, {{\char"25CC\textsuperscript{5}}}, and {{\char"25CC\textsuperscript{43}}} denote tones of the preceding syllable. Pitches of the tones:
+
+
+low = {{\char"25CC\textsuperscript{1}}} < {{\char"25CC\textsuperscript{2}}} < {{\char"25CC\textsuperscript{3}}} < {{\char"25CC\textsuperscript{4}}} < {{\char"25CC\textsuperscript{5}}} = high; {{\char"25CC\textsuperscript{43}}} = {{\char"25CC\textsuperscript{4}}} \searrow{} {{\char"25CC\textsuperscript{3}}}
+
+A tilde below a vowel (e.g., \cmubdata{a̰}) denotes creaky voice (a type of phonation that is often perceived as low-pitched and “rough”). A tilde over a vowel (e.g., \cmubdata{\~{a}}) denotes a nasal sound. 
+
+An \texttr{owl monkey} is a type of monkey. \texttr{Cassava} is a woody plant native to South America. A \texttr{ka̰\textsuperscript{1} tree} is a kind of fruit tree. \texttr{ŋo\textsuperscript{3} ʔo̰\textsuperscript{1}} is a kind of fish.
+\end{tblsWarning}
+
+\end{problem}
+
+\hypertarget{solutions-of-practice-problems}{%
+\section{Solutions of practice problems}}
+
+\begin{practiceproblemsolution}{4.6. \langnameLaMi}
+
+\begin{solutions}[label=Solution 4.6\alph*]
+\item
+\begin{tabular}[t]{lll}
+    Guoyu & \langnameLaMi & Translation \\
+    \pbpbsv{be ts\textquoteright ai}{le bi lai ts\textquoteright i}{to go shopping}
+    \pbpbsv{t\textquoteright at}{lat t\textquoteright it}{to hit}
+    \pbpbsv{ts\textquoteright in t\textquoteright iam}{lin ts\textquoteright in liam t\textquoteright in}{very tired}
+    \pbpbsv{gaŋ}{laŋ gin}{human}
+    \pbpbsv{gi}{li gi}{justice}
+    \pbpbsv{ho k\textquoteright eʔ}{lo hi leʔ k\textquoteright iʔ}{guest of honour}
+    \pbpbsv{tsap ap}{lap tsit lap it}{ten boxes}
+\end{tabular}
+\end{solutions}
+
+\rules
+
+We note with \textit{C}\textsubscript{1}, \textit{V} and \textit{C}\textsubscript{2} the onset,
+nucleus and coda of the syllable, respectively. Now each syllable can be
+written as (\textit{C}\textsubscript{1})\textit{V}(\textit{C}\textsubscript{2}). The transformation
+is: \textit{C}\textsubscript{1}\textit{VC}\textsubscript{2} \rightarrow~\cmubdata{lVC}\textsubscript{2}
+\textit{C}\textsubscript{1}\cmubdata{iX}, where \textit{X} depends on \textit{C}\textsubscript{2}, as
+follows:
+
+\begin{table}[H]
+    \begin{tabular}{ll}
+    \lsptoprule
+        \textit{C}\textsubscript{2} & \textit{X} \\
+    \midrule
+    $\varnothing$ & $\varnothing$\\
+    \cmubdata{ʔ} & \cmubdata{ʔ} \\
+    \cmubdata{m}, \cmubdata{n}, \cmubdata{ŋ} & \cmubdata{n} \\
+    \cmubdata{p}, \cmubdata{t}, \cmubdata{k} & \cmubdata{t} \\
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+
+We deduce that X is identical with C\textsubscript{2}, but with an assimilated place of articulation (alveolar). Exception: \cmubdata{ʔ} (which remains unchanged). Another explanation is:
+
+% \begin{itemize}
+% \begin{multicols}{3}
+% \item \cmubdata{ʔ} \rightarrow~\cmubdata{ʔ}
+% \item \(\boldsymbol{{[}+nasal{]}}\) \rightarrow~\cmubdata{n}
+% \item \(\begin{bmatrix}
+%     \boldsymbol{+ stop}\\
+%     \boldsymbol{- voice}\\
+% \end{bmatrix}\) \rightarrow~\cmubdata{t}
+
+\begin{itemize*}[itemjoin={\quad\quad\quad}]
+\item  ʔ$\to$ʔ  
+\item  \featurebox{+nasal} $\to$ n   
+\item  \featurebox{+stop\\--voice}$\to$t
+\end{itemize*}
+% \end{multicols}
+
+% \end{itemize}
+
+\end{practiceproblemsolution}
+
+\begin{practiceproblemsolution}{4.7. \langnameTolaki}
+
+\begin{solutions}[label=Solution 4.7\alph*]
+\item
+\begin{tabular}[t]{lll}
+    \pbpbsv{baho}{nibaho}{bathe}
+    \pbpbsv{inu}{ininu}{drink}
+    \pbpbsv{kulisi}{kinulisi}{dig}
+    \pbpbsv{mala}{nimala}{shorten}
+    \pbpbsv{paho}{pinaho}{plant}
+    \pbpbsv{ruru}{niruru}{collect}
+    \pbpbsv{solongako}{sinolongako}{empty}
+    \pbpbsv{usa}{inusa}{crush}
+\end{tabular}
+\item Because it is not known which \cmubdata{n} is part of the stem and which one is part of the affix. Thus, it can either be the prefix \cmubdata{ni-} added to the word \cmubdata{nahu}, or the infix \cmubdata{-in-}, added after the first consonant of the word \cmubdata{nahu}.
+\end{solutions}
+
+\rules
+
+\begin{itemize}
+    \item If the lexeme starts with a vowel, add \cmubdata{in-} at the beginning;
+    \item If the lexeme starts with a voiced consonant, add \cmubdata{ni-} at the beginning.
+    \item If the lexeme starts with a voiceless consonant, add \cmubdata{-in-} after the first consonant.
+\end{itemize}
+
+\end{practiceproblemsolution}
+
+\begin{practiceproblemsolution}{4.8. Sorba}
+
+\begin{solutions}[label=Solution 4.8\alph*]
+\item\sloppy \cmubdata{caran}, \cmubdata{dirja}, \cmubdata{karma}, \cmubdata{kormaro}, \cmubdata{peram}, \cmubdata{kormaro}, \cmubdata{peram}, \cmubdata{pirlim-pirlim}, \cmubdata{purda}
+\item The word cannot be uniquely determined since the coda of the last syllable disappears. Moreover, it is not known if the \cmubdata{r} in \cmubdata{lore} is part of the root or if it is added, thus \cmubdata{lore} can result from any of the following words: \cmubdata{relo}, \cmubdata{elo}, \cmubdata{reloC}, \cmubdata{eloC} (where \cmubdata{C} can be any consonant).
+\item \cmubdata{tilapir}
+\item A single sound, since the word \cmubdata{manangih} becomes \cmubdata{ngirmana} in Sorba. If \cmubdata{ng} was two sounds, the word would have become \cmubdata{girmanan}.
+\end{solutions}
+
+\rules
+
+In order to form the Sorba word, we need to take the last syllable of the word, remove its coda (only keep the first consonant -- if any -- and the first vowel) and add it to the beginning of the word, separated by an \cmubdata{r}. If the word already begins with an \cmubdata{r}, no extra \cmubdata{r} is added. Thus, a word such as \cmubdata{...(C)V(V)(C)} becomes \cmubdata{(C)Vr...}. It is important to notice that two consecutive vowels will form a diphthong, according to the example \cmubdata{cam.pua} \rightarrow~\cmubdata{pu-r.cam}. If it were a hiatus, we would get \cmubdata{cam.pu.a} \rightarrow~\cmubdata{a-r.cam.pu}.
+
+In order to form the Solabar word, the same process as in Sorba is applied, but the connecting \cmubdata{r} is replaced by \cmubdata{la} (resulting in \cmubdata{(C)Vla...}).
+\end{practiceproblemsolution}
+
+\begin{practiceproblemsolution}{4.9. \langnameArabic}
+
+\begin{solutions}[label=Solution 4.9\alph*]
+\item 
+\begin{tabular}[t]{@{} lll @{} }
+    \cmubdata{almuðannab} & \cmubdata{albarq} & \cmubdata{aθθalǯ}    \\
+    \cmubdata{annār}   & \cmubdata{aḍḍawʹ} &  \cmubdata{allayla}  \\
+    \cmubdata{alɣurūb} & \cmubdata{aššitāʹ} &  \cmubdata{arrabīʕ} \\
+    \cmubdata{aṣṣayf}  & \cmubdata{alxarīf} &  \\
+\end{tabular}
+\item Lunar consonants: \cmubdata{b}, \cmubdata{f}, \cmubdata{ɣ}, \cmubdata{y}
+
+ Solar consonants: \cmubdata{ḍ}, \cmubdata{n}, \cmubdata{r}, \cmubdata{θ}, \cmubdata{z}
+\item \cmubdata{ǯ}
+\end{solutions}
+
+\rules
+
+ Solar consonants include the coronal consonants. In their case, the definite form is constructed by adding the prefix \cmubdata{aX-} (where \cmubdata{X} is the first consonant of the word). Lunar consonants are all the rest (labial and dorsal), and if a word begins with a lunar consonant, the definite form is simply obtained by adding the prefix \cmubdata{al-}. Alternatively, we can write:
+
+ \exrule{
+ \phonrule{l}{
+ \begin{tabular}{c}C\\{}\textsc{[+coronal]}\end{tabular}
+ }{
+ \begin{tabular}{c}C\\{}\textsc{[+coronal]}\end{tabular}\longrule
+ }
+ }
+
+% \centerline{
+% \cmubdata{l} \rightarrow~\(\begin{matrix}
+% \boldsymbol{C} \\
+% \left\lbrack \boldsymbol{+ coronal} \right\rbrack \\
+% \end{matrix}\) \cmubdata{/} \(\begin{matrix}
+% \boldsymbol{C} \\
+% \left\lbrack \boldsymbol{+ coronal} \right\rbrack \\
+% \end{matrix}\) \cmubdata{\_}
+
+
+% \phonrule{l}{\featurebox{+coronal}}{\featurebox{+coronal}{\longrule}}
+% }
+
+
+The consonant \cmubdata{ǯ}, although coronal, does not assimilate the prefix \cmubdata{al-}; therefore, most likely, in the past, it was
+pronounced as a dorsal (probably as a voiced palatal plosive).
+\end{practiceproblemsolution}
+
+
+
+\begin{practiceproblemsolution}{4.10. \langnameSesotho}
+
+\begin{solutions}[label=Solution 4.10\alph*]
+\item \quad
+
+\begin{table}[H]
+\hfill
+\begin{tabular}[t]{ll}
+    \lsptoprule
+    South Africa & Lesotho \\
+    \midrule
+    \cmubdata{\textbf{dula}} & \cmubdata{lula} \\
+    \cmubdata{\textbf{hlompjhwa}} & \cmubdata{hlompshoa} \\
+    \cmubdata{kadima} & \cmubdata{kalima} \\
+    \cmubdata{Kgodu} & \cmubdata{Kholu} \\
+    \cmubdata{kgwedi} & \cmubdata{\textbf{khoeli}} \\
+    \cmubdata{\textbf{kutlwisiso}} & \cmubdata{kutloisiso} \\
+    \cmubdata{\textbf{mme}} & \cmubdata{'me} \\
+    \cmubdata{Mokgatjhane} & \cmubdata{\textbf{Mokhachane}} \\
+    \cmubdata{nkwe} & \cmubdata{nkoe} \\
+    \cmubdata{nnete} & \cmubdata{'nete} \\
+    \lspbottomrule
+\end{tabular}
+\hfill
+\begin{tabular}[t]{ll}
+    \lsptoprule
+    South Africa & Lesotho \\
+    \midrule
+    \cmubdata{nngwaya} & \cmubdata{\textbf{'ngoaea}} \\
+    \multicolumn{2}{c}{\cmubdata{ntate}}  \\
+    \cmubdata{nwa} & \cmubdata{\textbf{noa}} \\
+    \multicolumn{2}{c}{\cmubdata{phela}} \\
+    \cmubdata{titjhere} & \cmubdata{\textbf{tichere}} \\
+    \cmubdata{\textbf{tjha}} & \cmubdata{cha} \\
+    \cmubdata{tjhelete} & \cmubdata{chelete} \\
+    \cmubdata{\textbf{watjhe}} & \cmubdata{oache} \\
+    \cmubdata{ya} & \cmubdata{ea} \\
+    \cmubdata{yohle} & \cmubdata{\textbf{eohle}} \\
+    \lspbottomrule
+\end{tabular}
+\hfill\hbox{}
+\end{table}
+
+\centerline{The words in bold are those that do not appear in the dataset.}
+\item \cmubdata{joang} -- Lesotho (in South Africa it is written as
+  \cmubdata{jwang})
+
+  \cmubdata{shwa} -- South Africa (in Lesotho it is written as
+\cmubdata{shoa})
+\end{solutions}
+
+\pagebreak
+\rules We have the following sound correspondences:
+
+\begin{table}[H]
+    \begin{tabular}{ll}
+    \lsptoprule
+    South Africa & Lesotho \\
+    \midrule
+    \cmubdata{di} & \cmubdata{li} \\
+    \cmubdata{du} & \cmubdata{lu} \\
+    \cmubdata{kg} & \cmubdata{kh} \\
+    \cmubdata{mm} & \cmubdata{'m} \\
+    \cmubdata{nn} & \cmubdata{'n} \\
+    \cmubdata{pjh} & \cmubdata{psh} \\
+    \cmubdata{tjh} & \cmubdata{ch} \\
+    \cmubdata{w} + vowel & \cmubdata{o} + vowel \\
+    \cmubdata{y} + vowel & \cmubdata{e} + vowel \\
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+\end{practiceproblemsolution}
+
+\begin{practiceproblemsolution}{4.11. \langnameDutch}
+
+\begin{solutions}[label=Solution 4.11\alph*]
+    \item
+    \begin{multicols}{3}
+    \begin{enumerate}[label = (\arabic*)]
+        \item \cmubdata{steegje}
+        \item \cmubdata{stegje}
+        \item \cmubdata{bioscoopje}
+        \item \cmubdata{deurtje}
+        \item \cmubdata{autootje}
+        \item \cmubdata{zoontje}
+        \item \cmubdata{zonnetje}
+        \item \cmubdata{musje}
+        \item \cmubdata{winkeltje}
+        \item \cmubdata{balletje}
+        \item \cmubdata{balletje}
+        \item \cmubdata{pyjamaatje}
+        \item \cmubdata{schimmetje}
+        \item \cmubdata{pet}
+    \end{enumerate}
+    \end{multicols}
+    \item \cmubdata{vlo} and \cmubdata{vloot}
+\end{solutions}
+
+\rules
+
+ The diminutive depends on the last sound of the word. We have the following cases:
+
+\begin{itemize}
+    \item vowel \Rightarrow~ add \cmubdata{Vtje} (where \cmubdata{V} is the last vowel of the word);
+    \item obstruent (stop or fricative) \Rightarrow~add \cmubdata{-je};
+    \item sonorant (nasal or liquid -- \cmubdata{m}, \cmubdata{n}, \cmubdata{l}, \cmubdata{r}):
+    \begin{itemize}
+        \item if the word has only one syllable and the vowel is short, add the suffix \cmubdata{-Cetje} (where \cmubdata{C} is the last consonant);
+        \item else, add \cmubdata{-tje} (if (1) the word has only one syllable and contains a long vowel or a diphthong or (2) the word contains more than a syllable).
+    \end{itemize}
+\end{itemize}
+
+\end{practiceproblemsolution}
+\pagebreak
+\begin{practiceproblemsolution}{4.12. \langnameFinnish{} -- \langnameEstonian}
+
+\begin{solutions}[label=Solution 4.12\alph*]
+    \item
+    \begin{multicols}{3}
+        \begin{enumerate}[label = (\arabic*)]
+            \item \cmubdata{rahvaan}
+            \item \cmubdata{rahvaaseen}
+            \item \cmubdata{rahvasse}
+            \item \cmubdata{paljas}
+            \item \cmubdata{paljas}
+            \item \cmubdata{palja}
+            \item \cmubdata{tuores}
+            \item \cmubdata{kirveen}
+            \item \cmubdata{kirve}
+            \item \cmubdata{kirvesse}
+            \item \cmubdata{valmis}
+            \item \cmubdata{valmiiseen}
+            \item \cmubdata{osa}
+            \item \cmubdata{linn}
+            \item \cmubdata{linnaan}
+            \item \cmubdata{külla}
+            \item \cmubdata{ässä}
+            \item \cmubdata{ässän}
+            \item \cmubdata{ässa}
+            \item \cmubdata{pöör}
+            \item \cmubdata{püörän}
+            \item \cmubdata{pööra}
+            \item \cmubdata{püörään}
+            \item \cmubdata{pööra}
+            \item \cmubdata{lume}
+            \item \cmubdata{sarven}
+            \item \cmubdata{niemeen}
+            \item \cmubdata{tuomi}
+            \item \cmubdata{tuomen}
+            \item \cmubdata{tuomeen}
+            \item \cmubdata{toome}
+            \item \cmubdata{meri}
+            \item \cmubdata{meri}
+            \item \cmubdata{meren}
+            \item \cmubdata{mere}
+            \item \cmubdata{mereen}
+        \end{enumerate}
+    \end{multicols}
+\end{solutions}
+
+\rules
+
+We divide the nouns (nominative, Finnish) into three classes: ending in \cmubdata{s} (preceded by a vowel), ending in \cmubdata{i}, and ending in another vowel. We get:
+
+\begin{table}[H]
+    \begin{tabular}{ccccccc}
+    \lsptoprule
+     & \multicolumn{2}{c}{Nominative} & \multicolumn{2}{c}{Genitive} & \multicolumn{2}{c}{Illative} \\\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+    & F & E & F & E & F & E \\\midrule
+    Class I & \cmubdata{-Vs} & \cmubdata{-Vs} & \cmubdata{-VVn} & \cmubdata{-V} & \cmubdata{-VVseen} & \cmubdata{-Vsse}\\
+    Class II & \cmubdata{-V} & * & \cmubdata{-Vn} & \cmubdata{-V} & \cmubdata{-VVn} & \cmubdata{-V}\\
+    Class III & \cmubdata{-i} & * & \cmubdata{-en} & \cmubdata{-e} & \cmubdata{-een} & \cmubdata{-e}\\
+    \lspbottomrule
+    \end{tabular}
+    \footnotetext{* To form the Estonian nominative, if the Finnish root contains a diphthong or a consonant cluster, the final vowel is dropped in Estonian (\cmubdata{-V \rightarrow~$\varnothing$}). Else, the form is identical to the Finnish one (exception: \cmubdata{ä \rightarrow~a / \_ \#}).}
+\end{table}
+
+\begin{itemize}
+\item Diphthongs in Finnish become long vowels in Estonian: \cmubdata{V\textsubscript{1}V\textsubscript{2} \rightarrow~V\textsubscript{2}V\textsubscript{2}}.
+
+\item  If the Estonian nominative ends in a vowel, the consonant before it is
+doubled in the illative. (\cmubdata{-CV \rightarrow~-CCV} or \cmubdata{Ci \rightarrow~-CCe}).
+
+\end{itemize}
+\end{practiceproblemsolution}
+
+\begin{practiceproblemsolution}{4.13. \langnameBari}
+
+\begin{solutions}[label=Solution 4.13\alph*]
+    \item \quad
+\end{solutions}
+    \begin{table}[H]
+    \begin{tabular}{lllcl}
+    \lsptoprule
+    Root & Form 1 & Form 2 & Tone & Translation \\\midrule
+    \roroline{dé̱ʔ}{dí̱lí̱kí̱n}{\cellcolor[HTML]{808080}}{g}{to bend}
+    \roroline{kú̱r}{kú̱rà̱kí̱n}{kú̱rà̱râ̱ʔ}{g}{to borrow}
+    \roroline{'dó̱k}{'dú̱kú̱kí̱n}{\cellcolor[HTML]{808080}}{g}{to carry}
+    \roroline{mók}{mòkákìn}{mòkáràʔ}{t}{to catch}
+    \roroline{tó̱k}{tú̱kú̱kí̱n}{tó̱kó̱rô̱ʔ}{g}{to cut with an axe}
+    \roroline{tòjûp}{tòjúpùkìn}{tòjúpùrùʔ}{t}{to dress}
+    \roroline{yúk}{yùkúkìn}{yùkúrùʔ}{t}{to shepherd}
+    \roroline{'dép}{'dépákín}{'dépárâʔ}{g}{to hold}
+    \roroline{gáʔ}{gálákín}{\cellcolor[HTML]{808080}}{g}{to seek}
+    \roroline{lú̱sà̱k}{lú̱sà̱kà̱kí̱n}{\cellcolor[HTML]{808080}}{g}{to defrost}
+    \roroline{sà̱pû̱k}{sà̱pú̱kà̱kì̱n}{sà̱pú̱kà̱rà̱ʔ}{t}{to return}
+    \roroline{'yút}{'yùtúkìn}{'yùtúrùʔ}{t}{to seed}
+    \roroline{tò̱kû̱}{tò̱kú̱kì̱n}{tò̱kú̱à̱rà̱ʔ}{t}{to preach}
+    \roroline{bú̱dú̱}{bú̱dú̱kí̱n}{\cellcolor[HTML]{808080}}{g}{to reach the top}
+    \roroline{báʔ}{bàlákìn}{\cellcolor[HTML]{808080}}{t}{to punish}
+    \roroline{só̱n}{sú̱nyú̱kí̱n}{só̱nyó̱rô̱ʔ}{g}{to send (something)}
+    \roroline{yà̱kî̱}{yà̱kí̱kì̱n}{yà̱kí̱à̱rà̱ʔ}{t}{to send (someone)}
+    \roroline{dòdông'}{dòdóng'àkìn}{dòdóng'àràʔ}{t}{to shake}
+    \roroline{'bóró}{'bórókín}{\cellcolor[HTML]{808080}}{g}{to smear}
+    \roroline{lì̱lî̱ng'}{lì̱lí̱ng'à̱kì̱n}{lì̱lí̱ng'à̱rà̱ʔ}{t}{to exterminate}
+    \roroline{ré̱m}{rí̱mí̱kí̱n}{\cellcolor[HTML]{808080}}{g}{to inject}
+    \roroline{bérén}{bérényákín}{\cellcolor[HTML]{808080}}{g}{to poison}
+    \roroline{ló}{lókín}{\cellcolor[HTML]{808080}}{g}{to sundry}
+    \roroline{dwán}{dwànyákìn}{\cellcolor[HTML]{808080}}{t}{to open}
+    \roroline{lák}{lákákín}{lákárâʔ}{g}{to untie}
+    \roroline{dó̱k}{db{ú}kú̱kí̱n}{\cellcolor[HTML]{808080}}{g}{to pack}
+    \lspbottomrule
+\end{tabular}
+\end{table}
+
+\rules
+
+\begin{enumerate}
+\item Change of the final consonant of the root (applied for both forms): \cmubdata{n \rightarrow~ny}, \cmubdata{ʔ \rightarrow~l};
+\pagebreak
+\item Tone:
+  \begin{enumerate}
+  \item Type \cmubdata{g}: all vowels (root and both forms) have high tone (\cmubdata{á}), except for the last vowel of Form 2 which has falling tone (\cmubdata{â});
+  \item Type \cmubdata{t}: chosen depending on the number of vowels (syllables), independent of the form:
+  \begin{itemize}
+      \item 1 syllable: high tone (\cmubdata{á});
+      \item 2 syllables: low + falling (\cmubdata{à} + \cmubdata{â});
+      \item 3 syllables: \cmubdata{à} + \cmubdata{á} + \cmubdata{à};
+      \item 4 syllables: \cmubdata{à} + \cmubdata{á} + \cmubdata{à} + \cmubdata{à};
+  \end{itemize}
+  \end{enumerate}
+\item Form 1:
+  \begin{enumerate}
+  \item Added suffix:
+
+  \begin{tabular}{lll}
+  \lsptoprule
+                    & \multicolumn{2}{c}{Last vowel} \\
+                    & \multicolumn{2}{c}{of the stem} \\\cmidrule(lr){2-3}
+       Stem ends in & −ATR & +ATR \\\midrule
+      consonant & \cmubdata{-akin} & \cmubdata{-a̱ki̱n} \\
+      vowel     & \cmubdata{-kin} & \cmubdata{-ki̱n} \\
+  \lspbottomrule
+  \end{tabular}
+  \item If the last vowel of the root is \cmubdata{u}: \cmubdata{akin \rightarrow~ukin};
+  \item If the last vowel of the root is \cmubdata{o̱}, it becomes \cmubdata{u̱} and \cmubdata{a̱ki̱n \rightarrow~u̱ki̱n};
+  \item If the last vowel of the root is \cmubdata{e̱}, it becomes \cmubdata{i̱} and \cmubdata{a̱ki̱n \rightarrow~i̱ki̱n};
+  \end{enumerate}
+
+    \note{Rules c) and d) can be combined and rewritten as: if the last vowel of the stem is \OlympiadPhonRule{\textsc{[+front]}} and \textsc{[+ATR]}, it will become \textsc{[+back]} and the epenthetic vowel \cmubdata{a} will fully assimilate to it.}
+
+  \pagebreak
+  \item Form 2:
+  \begin{enumerate}
+      \item Added suffix: \cmubdata{-araʔ} or \cmubdata{-a̱ra̱ʔ}
+    (harmony based on ATR);
+    \item If the last vowel of the stem is \cmubdata{u}, \cmubdata{-araʔ \rightarrow~-uruʔ};
+    \item If the last vowel of the stem is \cmubdata{o̱}, \cmubdata{-a̱ra̱ʔ \rightarrow~-u̱ru̱ʔ};
+  \end{enumerate}
+\end{enumerate}
+\note{Vowel changes (rules 3b-d and 4b-c) can be explained in another way: considering the last vowel of the root (V\textsubscript{1}) and the two vowels of the added suffixes (\cmubdata{-VkVn} and -\cmubdata{VrVʔ}), we have the following transformations:
+
+\begin{table}[H]
+    \begin{tabular}{ccc}
+    \lsptoprule
+                       & Form 1 & Form 2 \\
+    V\textsubscript{1} & V\textsubscript{1}-V-V & V\textsubscript{1}-V-V \\
+    \midrule
+    \cmubdata{o̱} & \cmubdata{u̱-u̱-i̱} & \cmubdata{o̱-o̱-o̱} \\
+    \cmubdata{u} & \cmubdata{u-u-i} & \cmubdata{u-u-u} \\
+    \cmubdata{e̱} & \cmubdata{i-i-i} &  \\
+    \lspbottomrule
+    \end{tabular}
+\end{table}
+}
+
+\end{practiceproblemsolution}
+
+\begin{practiceproblemsolution}{4.14. \langnameTicuna}
+\largerpage
+\begin{solutions}[label=Solution 4.14\alph*]
+    \item \texttr{ŋo\textsuperscript{3} ʔo̰\textsuperscript{1} ('s) garden}
+    \item \begin{enumerate}
+    \item \texttr{ka̰\textsuperscript{1} tree trunk}
+    \item \texttr{its leaves are white}
+    \item \texttr{really a ŋo\textsuperscript{3} ʔo̰\textsuperscript{1}}
+    \item \texttr{other one's garden}
+    \item \texttr{owl monkey's entire body}
+    \item \texttr{my tree trunk}
+\end{enumerate}
+\item
+\begin{multicols}{2}
+\begin{enumerate}[start = 7]
+    \item \cmubdata{na\textsuperscript{4} ˈtʃi\textsuperscript{5} ʔi\textsuperscript{1} ra\textsuperscript{1}}
+    \item \cmubdata{na\textsuperscript{4} ˈtʃo̰\textsuperscript{1} ʔtʃi\textsuperscript{5} ru\textsuperscript{1} ʔɨ\textsuperscript{5} tʃi\textsuperscript{1}}
+    \item \cmubdata{ˈtʃau\textsuperscript{1} te\textsuperscript{4} ʔɨ\textsuperscript{4} ne\textsuperscript{1}}
+    \item \cmubdata{ˈtʃo\textsuperscript{1} bɨ\textsuperscript{2}}
+\end{enumerate}
+\end{multicols}
+\end{solutions}
+
+\rules
+
+\begin{itemize}
+    \item The possessive and the adjective are placed before the noun.
+    \item The possessive is marked by: \cmubdata{to\textsuperscript{1}} (\texttr{other one's}), \cmubdata{ku\textsuperscript{43}} (\texttr{your}), \cmubdata{tʃau\textsuperscript{1}} (\texttr{his}).
+    \begin{itemize}
+        \item \cmubdata{tʃau\textsuperscript{1}} becomes \cmubdata{tʃo\textsuperscript{1}}, if it is before a bilabial consonant (\cmubdata{p}, \cmubdata{b}, \cmubdata{m}). The glottal stop does not block the transformation. Thus:
+
+ \centerline{\cmubdata{tʃau\textsuperscript{1} \rightarrow~tʃo\textsuperscript{1} / \_(ʔ)C\textsubscript{bilabial}}}
+        \item The stress falls on the first syllable. If the first syllable is \cmubdata{na\textsuperscript{4}} (\texttr{it is}), the stress shifts onto the second syllable.
+        \item Phonological processes:
+        \begin{itemize}
+            \item \cmubdata{a \rightarrow~o / ˈo(ʔ) \_} (\cmubdata{a} becomes \cmubdata{o} if it follows a stressed syllable that contains \cmubdata{o}, if there is no consonant between them (except for glottal stop));
+        \item \cmubdata{ɨ \rightarrow~V / ˈ V(ʔ) \_ } (\cmubdata{ɨ} fully assimilates to the preceding vowel if this vowel is in a stressed syllable and between them there is no other consonant  (except for glottal stop));
+        \item \cmubdata{ˈ V̰\textsuperscript{1} \rightarrow~ˈ V\textsuperscript{5} / \_ (C)V\textsuperscript{1}} (tone dissimilation -- a pharyngealised vowel with tone 1 in a stressed syllable will become non-pharyn\-geal\-ised and with tone 5 if it is before another syllable with tone 1).
+        \end{itemize}
+    \end{itemize}
+    \end{itemize}
+
+
+\section*{Supplementary: Dictionary of base forms}
+
+\subsection*{Adjectives}
+
+\begin{multicols}{2}
+    \begin{itemize}
+        \item[] \cmubdata{bu\textsuperscript{3}} = \texttr{immature}
+        \item[] \cmubdata{me\textsuperscript{43}} = \texttr{good}
+        \item[] \cmubdata{tʃḭ\textsuperscript{1}} = \texttr{delicious}
+        \item[] \cmubdata{tʃo̰\textsuperscript{1}} = \texttr{white}
+    \end{itemize}
+\end{multicols}
+
+\subsection*{Nouns}
+
+\begin{multicols}{2}\raggedcolumns
+    \begin{itemize}
+        \item[] \cmubdata{a\textsuperscript{1} ne\textsuperscript{1}} = \texttr{garden}
+        \item[] \cmubdata{a\textsuperscript{5} tɨ\textsuperscript{3}} = \texttr{leaves}
+        \item[] \cmubdata{ʔa̰\textsuperscript{1}} = \texttr{mouth}
+        \item[] \cmubdata{bɨ\textsuperscript{2}} = \texttr{high-starch food}
+        \item[] \cmubdata{e\textsuperscript{3} ɟa̰\textsuperscript{1}} = \texttr{sister}
+        \item[] \cmubdata{ʔɨ\textsuperscript{4} ne\textsuperscript{1}} = \texttr{entire body}
+        \item[] \cmubdata{me\textsuperscript{4} na\textsuperscript{2} ʔã\textsuperscript{2}} = \texttr{stick}
+        \item[] \cmubdata{ʔma̰\textsuperscript{1}} = \texttr{wife}
+        \item[] \cmubdata{ne\textsuperscript{1}} = \texttr{tree trunk}
+        \item[] \cmubdata{pa\textsuperscript{3} tɨ\textsuperscript{4}} = \texttr{fingernail}
+        \item[] \cmubdata{te\textsuperscript{4}} = \texttr{husband}
+        \item[] \cmubdata{tɨ\textsuperscript{2} ʔe\textsuperscript{1}} = \texttr{cassava}
+        \item[] \cmubdata{to̰\textsuperscript{1}} = \texttr{owl monkey}
+        \item[] \mbox{\cmubdata{ʔtʃi\textsuperscript{5} ru\textsuperscript{1}} = \texttr{clothes}}
+        \item[]
+    \end{itemize}
+\end{multicols}
+\end{practiceproblemsolution}
+
+% \section{Further reading}
+% \begin{enumerate}[{label=[\arabic{*}]}]
+%     \item Rocca, Iggy and Johnson, Wyn. “Course in phonology.”\ \textit{Blackwell Publishing}, Oxford (1999).
+%     \item Zsiga, Elizabeth C. “The sounds of language: an introduction to phonetics and phonology.”\ \textit{Wiley-Blackwell}, West Sussex (2013).
+% \end{enumerate}
+\nocite{RoccaJohnson1999, Zsiga2013}
+% \printbibliography[heading=FurtherReading]
+\FurtherReadingBox{}
+\end{refsection}

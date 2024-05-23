@@ -1,0 +1,52 @@
+\documentclass{langscibook}
+
+\usepackage[edges,linguistics]{forest}
+\forestset{OlympiadGen/.style = {
+		for tree = {folder, grow'=0, s sep=-6pt}
+	}
+}
+\newcounter{OlympiadGenCtr}
+
+\NewDocumentCommand{\OlympiadGenCounter}{}
+  {%
+  	\stepcounter{OlympiadGenCtr}\theOlympiadGenCtr.
+  }
+
+\begin{document}
+	\appendix
+	\chapter{Genealogical classification of the languages featured in the problems} 
+	\begin{forest} OlympiadGen
+		[\OlympiadGenCounter{} Afroasiatic
+			[{Chadic branch} [{Hausa (5.8, 8.6)}]]
+			[{Cushitic branch}:
+				[North [Beja (7.4)]]
+				[Lowland East [Somali (3.1)]]
+			]
+			[{Semitic branch > West Semitic}
+				[Central 
+				[{Arabic (2.9, 4.9, 7.7)}] [Hebrew (2.9)] [Maltese (5.13)]]
+				[South [Ge'ez (6.3)]]
+			]
+		]
+	\end{forest}\\
+	\begin{forest} OlympiadGen
+		[\OlympiadGenCounter{} Algic
+			[Algonquian branch
+				[Proto-Algonquian ✝ (6.5)]
+				[Central [Cree (6.12)]]
+			]
+		]
+	\end{forest}\\
+	\begin{forest} OlympiadGen
+		[\OlympiadGenCounter{} Arawakan
+			[Northern
+				[North Amazonian
+					[Tariana (6.8)]
+				]
+				[Ta-Maipurean
+					[Arawak (10.2)]
+				]
+			]
+		]
+	\end{forest}
+\end{document}

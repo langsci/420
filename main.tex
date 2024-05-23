@@ -1,0 +1,60 @@
+\documentclass[output=book,
+%   colorlinks,citecolor=brown
+% hidelinks
+%  ,draft
+% ,draftmode
+,chinesefont
+,koreanfont
+,japanesefont
+]{langscibook}
+
+
+\input{localhyphenation.tex}
+\input{localmetadata.tex}
+\input{localpackages.tex}
+\input{localcommands.tex}
+\input{MLE.tex}
+\addbibresource{localbibliography.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             Frontmatter                      %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\frontmatter
+\currentpdfbookmark{Contents}{name} % adds a PDF bookmark
+{\sloppy\tableofcontents}
+
+\include{chapters/note}
+\include{chapters/preface}
+\include{chapters/foreword}
+\include{chapters/acknowledgments}
+\include{chapters/0-abbr}
+
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             Chapters                         %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{chapters/01-IntroToLO}
+\include{chapters/02-WritingSystems} 
+\include{chapters/03-phonetics}
+\include{chapters/04-phonology} %use \phonrule and \featurebox instead of matrices
+\include{chapters/05-Noun}
+\include{chapters/06-Verb}
+\include{chapters/07-Syntax}
+\include{chapters/08-Semantics}
+\include{chapters/09-Numbers}
+\include{chapters/10-OtherProblems}
+
+\appendix
+\include{chapters/appendices}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%             Backmatter                       %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\nocite{*}
+\input{backmatter.tex}
+\end{document} 

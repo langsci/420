@@ -1,0 +1,182 @@
+\renewcommand{\sectref}[1]{Section~\ref{#1}}
+\setcounter{tocdepth}{5}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+% % % \newfontfamily \koreanfont[Scale=MatchUppercase]{NotoSerifKR-Regular.otf}
+%These fonts are loaded from langscibook
+\newcommand \koreantext [1] {\krn #1}
+\newcommand \chinesetext [1] {\cn #1}
+
+\newfontfamily \baybayin {NotoSansTagalog-Regular.ttf}
+\newcommand \baytext [1]{{\huge\baybayin #1}}
+
+\newfontfamily \arabfont {NotoSansArabic-Regular.ttf}
+\newcommand \arbtext [1] {{\arabfont #1}}
+
+\newfontfamily \burmfont {NotoSansMyanmar-Regular.ttf}
+\newcommand \burmtext [1] {{\Large\burmfont #1}}
+
+\newfontfamily \creefont {NotoSansCanadianAboriginal-Regular.ttf}
+\newcommand \creetext [1] {{\large\creefont #1}}
+
+\newfontfamily \hmongfont {NotoSansPahawhHmong-Regular.ttf}
+\newcommand \hmongtext [1] {{\large\hmongfont #1}}
+
+\newcommand \charstack [2] {\stackengine{1pt}{#1}{#2}{O}{c}{F}{F}{L}} % FIXME glyphs produced are too high
+
+\newfontfamily \luwfont {NotoSansAnatolianHieroglyphs-Regular.ttf}
+\newcommand \luwtext [1] {{\Huge\luwfont #1}}
+
+\newfontfamily \tagbwfont {NotoSansTagbanwa-Regular.ttf}
+\newcommand \tagbwtext [1] {{\tagbwfont #1}}
+
+\newfontfamily \oghamfont {NotoSansOgham-Regular.ttf}
+\newcommand \oghamtext [1] {{\huge\oghamfont #1}}
+
+\newfontfamily \lepchafont {NotoSansLepcha-Regular.ttf}
+\newcommand \lepchatext [1] {{\lepchafont #1}}
+
+\newfontfamily \hebfont {NotoSerifHebrew-VariableFont_wdth,wght.ttf}
+\newcommand \hebtext [1] {{\huge\hebfont #1}}
+
+\newfontfamily \javfont {javatext.ttf}
+\newcommand \javtext [1] {{\huge\javfont #1}}
+
+\newfontfamily \thaifont [Scale=MatchUppercase] {THSarabunNew.ttf}
+\newcommand \thaitext [1] {{\thaifont #1}}
+
+\makeatletter
+\renewcommand\xleftrightarrow[2][]{%
+  \ext@arrow 9999{\longleftrightarrowfill@}{#1}{#2}}
+\newcommand\longleftrightarrowfill@{%
+  \arrowfill@\leftarrow\relbar\rightarrow}
+\makeatother
+
+
+\newcommand{\cmubdata}[1]{\textit{#1}}
+\newcommand{\texttr}[1]{`#1'}
+\newcommand \OlympiadNewTerm [1] {\textsc{#1}}
+\newcommand \OlympiadGrammar [1] {{\scshape\oldstylenums #1}}
+\newcommand \OlympiadPhonRule [1] {#1}
+\newcommand \OlympiadFeature [1] {\textit{#1}}
+
+\newcounter{pbcounter}
+\counterwithin*{pbcounter}{chapter}
+\newcounter {exx}[pbcounter]
+\newcounter {exxx}[pbcounter]
+\newcounter {pbblank}[pbcounter]
+\def\expp#1{\exi{{(\ref{#1}$''$)}}}
+\newcommand{\exrule}[1]{\begin{exe}\sn\relax#1\end{exe}}
+
+\newlist{assgts}{enumerate}{2}
+\setlist[assgts]
+  {%
+    label={Problem~\thechapter.\thepbcounter\alph*},
+    font=\bfseries,
+    align=left,
+    leftmargin=*
+  }
+  
+\newlist{solutions}{enumerate}{2}
+\setlist[solutions]
+  {%
+    label={Solution~\thechapter.\thepbcounter\alph*},
+    font=\bfseries,
+    align=left,
+    leftmargin=*
+  }
+
+\newcommand \blankitem{\item[\vspace{\fill}]}
+
+\newenvironment{problem}[3]{%
+    \section*{\stepcounter{pbcounter}Problem~\thechapter.\thepbcounter}
+    \subsection*{#1 (#2, #3)}
+    \addcontentsline{toc}{subsection}{Problem \thechapter.\thepbcounter\ (#1)}
+    }
+    {}
+
+
+\newenvironment{discussion}{\section*{Discussion (not part of the solution)}}{}
+\newenvironment{mysolution}[1][]{\subsection*{Solution #1}
+}{
+}
+
+
+\newenvironment{practiceproblemsolution}[1]{
+\setcounter{equation}{0}
+\subsection*{Solution for practice problem #1}
+}{
+% \end{tblslineshorizontal}
+}
+
+
+\newcommand \scriptline [3]{\addtocounter{exx}{1}\arabic{exx}. &\cmubdata{#1} &\cmubdata{#2} &\texttr{#3}\\}
+\newcommand \hmongline [3]{\addtocounter{exx}{1}\arabic{exx}. &\hmongtext{#1} &\cmubdata{#2} &\texttr{#3}\\}
+\newcommand \pbblank {\textnormal{\underline{\hspace{0.4cm}}\addtocounter{pbblank}{1}(\arabic{pbblank})\underline{\hspace{0.4cm}}}}
+\newcommand \oghamline [3]{\addtocounter{exx}{1}\arabic{exx}.&{\oghamtext{#1}}&\addtocounter{exxx}{1}\Alph{exxx}.&\cmubdata{#2} (\texttr{#3})\\}
+\newcommand \arabhebtr [3]{\cmubdata{#1}&\cmubdata{#2}&\texttr{#3}}
+\newcommand \javaneseline [3]{\addtocounter{exx}{1}\arabic{exx}. &#1 &\cmubdata{#2} &\texttr{#3}\\}
+\newcommand \roroline [5]{\cmubdata{#1} &\cmubdata{#2} &\cmubdata{#3} &\cmubdata{#4} &\texttr{#5} \\}
+\newcommand \pbpbsv [3]{\cmubdata{#1} &\cmubdata{#2} &\texttr{#3} \\}
+\newcommand \pbsv [2]{\cmubdata{#1} & \texttr{#2}}
+\newcommand \pbsvnum [2]{\cmubdata{#1} & $#2$}
+\newcommand \pbpbsvnoem [3]{\cmubdata{#1} &\cmubdata{#2} &\texttr{#3}}
+\newcommand \pbpbpbsv [4]{\cmubdata{#1} &\cmubdata{#2} &\cmubdata{#3} &\texttr{#4}\\}
+\newcommand \pbpbpb [3]{\cmubdata{#1} &\cmubdata{#2} &\cmubdata{#3}\\}
+\newcommand \evenkiline [6]{\cmubdata{#1} &\cmubdata{#2} &\cmubdata{#3} &\cmubdata{#4} &\cmubdata{#5} &\texttr{#6}\\}
+\newcommand \feline [7]{\texttr{#1} & \cmubdata{#2} &\cmubdata{#3} &\cmubdata{#4} &\cmubdata{#5} &\cmubdata{#6} &\cmubdata{#7}\\}
+\newcommand \chaosline [2]{\addtocounter{exx}{1}\arabic{exx}.&\cmubdata{#1}&\addtocounter{exxx}{1}\AlphAlph{\value{exxx}}.&\texttr{#2} \\}
+\newcommand \chaoslinetariana [2]{\addtocounter{exx}{1}\arabic{exx}.&\texttr{#1}&\addtocounter{exxx}{1}\AlphAlph{\value{exxx}}.&\cmubdata{#2}\\}
+\newcommand \sentlineonerow [2]{\addtocounter{exx}{1}\arabic{exx}.&\cmubdata{#1}&\texttr{#2}\\}
+\newcommand \sentlinetworows [2]{\addtocounter{exx}{1}\arabic{exx}.&\cmubdata{#1}\\ & \texttr{#2}\\}
+\newcommand \fijiantask [3]{\addtocounter{exx}{1}\arabic{exx}.&\cmubdata{#1}&\texttr{#2} &\texttr{#3}\\}
+\newcommand \colourline [8] {#1 & \cmubdata{#2} & \cmubdata{#3} & \cmubdata{#4} & \cmubdata{#5} & \cmubdata{#6} & \cmubdata{#7} & \cmubdata{#8}\\}
+\newcommand \eqline [2] {\addtocounter{exx}{1}(\arabic{exx})& \cmubdata{#1} & $=$ &\cmubdata{#2}\\}
+\newcommand \wordtrans [2] {\cmubdata{#1} = \texttr{#2}}
+
+
+\makeatletter
+\XeTeXcharclass"16B01=0
+\XeTeXcharclass"02D0=0
+\XeTeXcharclass"1F404=0
+\XeTeXcharclass"1F402=0
+\XeTeXcharclass"1F414=0
+\XeTeXcharclass"1F413=0
+\XeTeXcharclass"1F407=0
+\XeTeXcharclass"1F464=0
+\XeTeXcharclass"1F406=0
+\makeatother
+
+\newcommand{\solution}[1]{Solution: #1}
+\newcommand{\rules}{\paragraph*{Rules:}\par}
+\newcommand{\note}[1]{\begin{tblsfilledsymbol}{Note}{bulbon}{#1}\end{tblsfilledsymbol}}
+\newcommand{\remember}[1]{\begin{tblsfilledsymbol}{Remember}{bulb}{#1}\end{tblsfilledsymbol}}
+\newcommand{\OlympiadHint}[1]{\begin{tblsfilledsymbol}{Hint}{bulbon}{#1}\end{tblsfilledsymbol}}
+
+% \setkomafont{descriptionlabel}{\normalfont\bfseries}
+
+\DeclareTColorBox{tblsWarning}{O{black!12}}
+  {
+    graphical environment = tikzpicture,
+    boxsep = 0pt,
+    top = 5mm,
+    bottom = 5mm,
+    left = 5mm,
+    right = 5mm,
+    frame engine = path,
+    extras = {frame engine=path},
+    frame style = {fill=#1},
+    sharp corners = all,
+    leftrule=9mm,
+    before upper = {\setlength{\parskip}{.5\baselineskip}},
+    overlay unbroken and first = {\node[anchor=north west,outer sep=5pt] at (frame.north west) {{\color{black!70}\includegraphics[width=9mm]{tbls-report.pdf}}};}
+  }
+
+\defbibheading{FurtherReading}{}
+\NewDocumentCommand{\FurtherReadingBox}{}
+  {%
+    \begin{tblsfilledsymbol}{Further reading}{book}
+    \printbibliography[heading=FurtherReading]
+    \end{tblsfilledsymbol}
+  }
+  
